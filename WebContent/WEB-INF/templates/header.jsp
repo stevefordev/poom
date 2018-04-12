@@ -23,7 +23,6 @@
 				<div class="main _newsRegion">
 					<ul data-viewname="DNewsListView" class="news_list">
 
-
 					</ul>
 				</div>
 			</article>
