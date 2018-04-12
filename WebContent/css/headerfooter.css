@@ -106,7 +106,6 @@ body input {
 #header div.header_links>ul.show{
     display: block;
 }
-
 #header .mypage_drop:after {
     content: "";
     display:block;
