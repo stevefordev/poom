@@ -6,5 +6,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 <mapper namespace="contracts">
 
+	<select id="selectListByServiceNo" parameterType="Contract" resultType="Contract">
+		  SELECT no, giver_no giverNo, taker_no takerNo, service_no serviceNo, poom, status, 
+		  content, score_user scoreUser, 
+		  score_price scorePrice, score_kind scoreKind, score_knowhow scoreKnowhow, score_honest scoreHonest, 
+		  regdate
+		  FROM contracts
+		  WHERE service_no=#{serviceNo} AND status=#{status}
+	</select>
 
 </mapper>

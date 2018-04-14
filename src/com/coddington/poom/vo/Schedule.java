@@ -2,6 +2,8 @@ package com.coddington.poom.vo;
 
 import java.sql.Date;
 
+import com.coddington.poom.util.FieldUtil;
+
 public class Schedule {
 	private int no,serviceNo;
 	private String serviceDay;
@@ -43,5 +45,9 @@ public class Schedule {
 		this.regdate = regdate;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return FieldUtil.getAllFields(this).toString();
+	} 
 }
