@@ -2,11 +2,46 @@ package com.coddington.poom.vo;
 
 import java.sql.Date;
 
+import com.coddington.poom.util.FieldUtil;
+
 public class User {
 
+	public static final String LOGIN_USER = "loginUser";
+	public static final String LOGIN_ERROR_MESSAGE = "loginErrorMessage" ;
 	private int no, coin;
 	private String email, password, name, nickName, phone, introduction, photoUrl;
 	private Date regdate;
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @param name
+	 * @param nickName
+	 * @param phone
+	 * @param introduction
+	 * @param photoUrl
+	 * @param coin
+	 * @param regdate
+	 */
+	public User(String email, String password, String name, String nickName, String phone,
+			String introduction, String photoUrl,int coin, Date regdate) {
+		super();
+		this.coin = coin;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.nickName = nickName;
+		this.phone = phone;
+		this.introduction = introduction;
+		this.photoUrl = photoUrl;
+		this.regdate = regdate;
+	}
+
 	public int getNo() {
 		return no;
 	}
@@ -68,5 +103,9 @@ public class User {
 		this.regdate = regdate;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return FieldUtil.getAllFields(this).toString();
+	} 
 }

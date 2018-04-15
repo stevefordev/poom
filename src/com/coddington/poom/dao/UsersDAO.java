@@ -7,15 +7,43 @@ import com.coddington.poom.util.SqlSessionUtil;
 import com.coddington.poom.vo.User;
 
 public class UsersDAO {
+	/**
+	 * 유저 가입
+	 * @param user
+	 * @return
+	 */
+	public static int insert(User user) {
+		int result = 0;
+
+		SqlSession session = null;
+		try {
+			session = SqlSessionUtil.getSession();
+			result = session.insert("users.insert", user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		} // try~catch~finally end
+
+		return result;
+
+	}
+
+	/***
+	 * 
+	 * @param user
+	 * @return
+	 */
 	public static User selectLogin(User user) {
-		User loginMember = null;
+		User loginUser= null;
 
 		SqlSession session = null;
 
 		try {
 			session = SqlSessionUtil.getSession();
 
-			loginMember = session.selectOne("users.selectLogin", user);
+			loginUser = session.selectOne("users.selectLogin", user);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -25,9 +53,9 @@ public class UsersDAO {
 			} // if end
 		} // try~catch~finally end
 
-		return loginMember;
+		return loginUser;
 	}// selectLogin() end
-	
+
 	public static List<User> selectListAll() {
 		List<User> list = null;
 
