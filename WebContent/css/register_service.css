@@ -1,0 +1,11 @@
+#regionMainList {
+    width: 310px;
+    height: 128px;
+    background: #424242;
+}
+
+#regionSubList {
+    width: 310px;
+    height: 128px;
+    background: #b4b4b4;
+}

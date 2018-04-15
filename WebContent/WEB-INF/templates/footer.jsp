@@ -1,15 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 </div>
 <div id="footer">
-    <div class="about_links">
-        <a href="#">소개</a>
-        <a href="#">정책</a>
-        <a href="#">고객 센터</a>
-    </div>
-    <span>&copy; 2018 coddinton</span>
+	<div id="footerContent">
+		<div id="footerContentBox">
+			<ul id="introduce">
+				<li>소개</li>
+				<li>????</li>
+			</ul>
+			<ul id="policy">
+				<li>정책</li>
+				<li>?????</li>
+				<li>?????</li>
+			</ul>
+			<ul id="serviceCenter">
+				<li>고객센터</li>
+				<li>?????</li>
+				<li>?????</li>
+			</ul>
+		</div>
+	</div>
+	<div id="footerLogo">
+		<span>품</span>
+	</div>
+	<div class="sns">
+		<a href="" class="facebook" target="_blank"> 페이스북 </a> <span>·</span>
 
+		<a href="" class="instagram" target="_blank"> 인스타그램 </a> <span>·</span>
+
+		<a href="" class="naver" target="_blank"> 블로그 </a> <span>·</span> <a
+			href="" class="kakaostory" target="_blank"> 카카오스토리 </a>
+	</div>
 </div>
 
 <!-- 이름 변경 수정 필요-->

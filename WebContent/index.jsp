@@ -9,7 +9,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>품</title>
-<%@ include file="WEB-INF/templates/link.jsp"%>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/alert.css" />
+<link rel="stylesheet" href="css/fontawesome-all.css" />
+<link rel="stylesheet" href="css/notosanskr.css" />
 <link rel="stylesheet" href="css/giver_card_step1.css">
 <link rel="stylesheet" href="css/login_join_popup.css">
 <!--slick 이미지슬라이드 css-->
@@ -39,6 +42,13 @@ body {
 	height: 600px;
 	background-color: rgba(0, 0, 0, 0.5);
 }
+
+#heroImageBox #header {
+	min-width: 1200px;
+	height: 100px;
+	background-color: transparent;
+	position: relative;
+}
 /*히어로이미지에 불투명한 어두운 필터를 넣어서 글씨들 잘보일수있게 하려고 박스모델 넣음*/
 #logoBox {
 	position: relative;
@@ -51,9 +61,16 @@ body {
 	font-weight: bolder;
 	text-decoration: none;
 	position: absolute;
-	top: 25px;
-	left: 25px;
-	/*background-color: #3F51B5;*/
+	top: 12px;
+	left: 40px;
+	display: block;
+	width: 80px;
+	height: 80px;
+}
+
+#logo img {
+	width: 80px;
+	height: 80px;
 }
 
 #searchBtn {
@@ -126,18 +143,31 @@ body {
 	margin-right: 10px;
 }
 /*히어로페이지 문구*/
-#text {
+#heroImageBox p#text {
 	position: absolute;
 	left: 50px;
 	top: 250px;
 	color: white;
 	font-size: 30px;
 	line-height: 40px;
+	min-width: 1200px;
 }
 
 .emphasis {
 	color: #349581;
 	font-weight: bold;
+}
+#header .bell {
+	width: 24px;
+    color: #f2c641;
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+#header .bell>i {
+	position: absolute;
+	left:0px;
+	bottom: 4px;
 }
 /*로그인했을시 내프로필과 프로필사진 닉네임이 있는 div*/
 #loginBox {
@@ -151,6 +181,7 @@ body {
 
 #loginBox.on {
 	display: block;
+	background: pink;
 }
 
 #loginBox>a {
@@ -221,8 +252,9 @@ body {
 
 #loginBox .mypage_drop {
 	position: absolute;
+	width: 140px;
 	top: 72px;
-	right: 40px;
+	left: 240px;
 	border-radius: 10px;
 	background: #424242;
 	text-align: center;
@@ -235,15 +267,16 @@ body {
 #loginBox .mypage_drop li {
 	color: #fff;
 	height: 30px;
-	width: 140px;	
+	width: 140px;
 	cursor: pointer;
-	    font-size: 16px;
-    line-height: 30px;
+	font-size: 16px;
+	line-height: 30px;
 }
 
 #loginBox .mypage_drop li a {
 	text-decoration: none;
 	color: white;
+	font-weight: normal;
 }
 
 #loginBox .mypage_drop li:last-child {
@@ -293,189 +326,206 @@ body {
 			<div id="color"></div>
 			<!--히어로이미지에 불투명한 어두운 필터를 넣어서 글씨들 잘보일수있게 하려고 박스모델 넣음-->
 			<div id="heroImageBox">
-				<div id="logoBox">
-					<a id="logo" href="">Logo</a> <a id="searchBtn" href="">서비스 검색</a>
-					<!--목록페이지로 넘어가는 링크-->
-					<form method="get" action="main.jsp">
-						<input type="text" name="search">
-						<button>
-							<i class="fas fa-search"></i>
-						</button>
-						<!--태그검색으로 관련 서비스를 찾을수있게 만든 검색창-->
-					</form>
-				</div>
-				<%
-					if (loginUser == null) {
-				%>
-				<div id="linkBox" class="on">
-					<a href="">품 요청/등록</a>
-					<!--giver와 taker들이 서비스 등록, 요청페이지로 넘어갈수있는 링크-->
-					<a id="heroJoinBtn" href="">회원가입</a> <a id="heroLoginBtn" href="">로그인</a>
-					<!--회원가입 로그인 팝업링크-->
-					<div id="popupBackground">
-						<!--팝업창 뒷배경-->
-						<div id="loginJoinWrap">
-							<div id="tabWrap">
-								<!--회원가입 로그인 팝업창 2개 탭 div-->
-								<div class="tab" id="joinTab">
-									<h1>회원가입</h1>
-								</div>
-								<!--
+				<div id="header">
+					<div id="logoBox">
+						<a id="logo" href=""><img src="/img/poom_logo.png"></a> <a
+							id="searchBtn" href="">서비스 검색</a>
+						<!--목록페이지로 넘어가는 링크-->
+						<form method="get" action="main.jsp">
+							<input type="text" name="search">
+							<button>
+								<i class="fas fa-search"></i>
+							</button>
+							<!--태그검색으로 관련 서비스를 찾을수있게 만든 검색창-->
+						</form>
+					</div>
+					<%
+						if (loginUser == null) {
+					%>
+					<div id="linkBox" class="on">
+
+						<!--giver와 taker들이 서비스 등록, 요청페이지로 넘어갈수있는 링크-->
+						<a id="heroJoinBtn" href="">회원가입</a> <a id="heroLoginBtn" href="">로그인</a>
+						<!--회원가입 로그인 팝업링크-->
+						<div id="popupBackground">
+							<!--팝업창 뒷배경-->
+							<div id="loginJoinWrap">
+								<div id="tabWrap">
+									<!--회원가입 로그인 팝업창 2개 탭 div-->
+									<div class="tab" id="joinTab">
+										<h1>회원가입</h1>
+									</div>
+									<!--
                          -->
-								<div class="tab on" id="loginTab">
-									<!--디스플레이 인라인플록으로 수평정렬을 해서 주석처리로 탭사이 간격을 줄임-->
-									<h1>로그인</h1>
+									<div class="tab on" id="loginTab">
+										<!--디스플레이 인라인플록으로 수평정렬을 해서 주석처리로 탭사이 간격을 줄임-->
+										<h1>로그인</h1>
+									</div>
+									<div style="clear: both"></div>
 								</div>
-								<div style="clear: both"></div>
-							</div>
 
-							<!--회원가입 입력폼 시작-->
-							<div id="joinInput">
-								<div id="joinText">
-									<h1>"품"에 오신것을 환영해요!</h1>
-									<h2>
-										회원으로 가입하시면</br> 품의 모든 서비스를 이용하실 수 있습니다
-									</h2>
-								</div>
-								<form id="joinContent" method="post" action="signup.jsp">
-									<div class="input_box" id="nameBox">
-										<label for="name">이름</label>
-										<div class="icon_box">
-											<i class="fas fa-user-circle"></i>
-										</div>
-										<!--인풋박스 옆에 아이콘이 들어가는 박스-->
-										<input id="name" autofocus required type="text" name="name"
-											placeholder="이름입력" title="이름을 입력해주세요">
-										<div class="alert_box" id="nameAlert">
-											<span class="msg good">완벽한 이름이네요!</span> <span
-												class="msg bad">한글과 영문 대 소문자를 2~15글자 이내로 사용하세요.</span>
-										</div>
-										<!--유효성검사할때 옳거나 잘못된입력을 했을때 해당하는 문구가 나오는 박스-->
-									</div>
-									<div class="input_box" id="phoneNumBox">
-										<label for="phoneNum">전화번호</label>
-										<div class="icon_box">
-											<i class="fas fa-phone"></i>
-										</div>
-										<input id="phoneNum" required type="text" name="phoneNum"
-											placeholder="-을 제외한 전화번호를 입력하세요">
-										<button id="phoneBtn" type="button" class="formBtn">전송</button>
-										<div class="alert_box" id="phoneNumAlert">
-											<span class="msg good">전화번호 입력완료</span> <span class="msg bad">정확한
-												전화번호를 입력하세요</span>
-										</div>
-									</div>
-									<div class="input_box" id="certificateBox">
-										<input id="certificate" disabled required type="text"
-											name="certificate">
-										<button id="certificateBtn" type="button" class="formBtn">인증</button>
-										<div class="alert_box" id="certificateAlert">
-											<span class="msg good">입력완료</span> <span class="msg bad">4개의
-												숫자를 입력하세요</span>
-										</div>
-									</div>
-									<div class="input_box" id="nicknameBox">
-										<label for="nickname">닉네임</label>
-										<div class="icon_box">
-											<i class="fas fa-user-circle"></i>
-										</div>
-										<input id="nickname" type="text" name="nickname" disabled
-											required placeholder="닉네임 입력" title="별명을 입력해주세요">
-										<div class="alert_box" id="nicknameAlert">
-											<span class="msg good">별명 입력완료</span> <span class="msg bad">한글과
-												영문 대 소문자를 사용해서 1~4글자를 입력해주세요.</span>
-										</div>
-									</div>
-									<div class="input_box" id="mailBox">
-										<label for="mail">E-mail</label>
-										<div class="icon_box">
-											<i class="fas fa-envelope"></i>
-										</div>
-										<input id="mail" required disabled type="text" name="email"
-											placeholder="이메일">
-										<div class="alert_box" id="mailAlert">
-											<span class="msg good">이메일 입력완료</span> <span class="msg bad">정확한
-												이메일을 기입해주세요</span>
-										</div>
-									</div>
-									<div class="input_box" id="passwordBox">
-										<label for="password">Password</label>
-										<div class="icon_box">
-											<i class="fas fa-key"></i>
-										</div>
-										<input id="password" required disabled type="password"
-											name="password" placeholder="비밀번호">
-										<div class="alert_box" id="passwordAlert">
-											<span class="msg good">좋은 비밀번호입니다.</span> <span
-												class="msg bad">영문,숫자,특수문자를 혼용하여 8~16자를 입력해주세요.</span>
-										</div>
-									</div>
-									<div class="input_box" id="recapchaBox">
-
-										<div class="g-recaptcha"
-											data-sitekey="6Lc0h1AUAAAAAHKNXTbxaJIhhnJb8YDjbNhwSPDR"
-											data-callback="verifyCallback"></div>
-
-									</div>
-									<button id="joinBtn">회원가입</button>
-								</form>
-							</div>
-							<!--회원가입 입력폼 끝-->
-							<!--로그인 입력폼 시작-->
-							<div id="loginInput" class="on">
-								<form action="login.jsp" method="post">
-									<div id="loginText">
+								<!--회원가입 입력폼 시작-->
+								<div id="joinInput">
+									<div id="joinText">
 										<h1>"품"에 오신것을 환영해요!</h1>
 										<h2>
-											"품"은 서로 간 시간을 거래할 수 있도록 하여</br> 모두의 경쟁력을 높이는 플랫폼 서비스입니다.
+											회원으로 가입하시면</br> 품의 모든 서비스를 이용하실 수 있습니다
 										</h2>
 									</div>
-									<div id="logininput_box">
-										<div class="input_box" id="loginEmailBox">
+									<form id="joinContent" method="post" action="signup.jsp">
+										<div class="input_box" id="nameBox">
+											<label for="name">이름</label>
+											<div class="icon_box">
+												<i class="fas fa-user-circle"></i>
+											</div>
+											<!--인풋박스 옆에 아이콘이 들어가는 박스-->
+											<input id="name" autofocus required type="text" name="name"
+												placeholder="이름입력" title="이름을 입력해주세요">
+											<div class="alert_box" id="nameAlert">
+												<span class="msg good">완벽한 이름이네요!</span> <span
+													class="msg bad">한글과 영문 대 소문자를 2~15글자 이내로 사용하세요.</span>
+											</div>
+											<!--유효성검사할때 옳거나 잘못된입력을 했을때 해당하는 문구가 나오는 박스-->
+										</div>
+										<div class="input_box" id="phoneNumBox">
+											<label for="phoneNum">전화번호</label>
+											<div class="icon_box">
+												<i class="fas fa-phone"></i>
+											</div>
+											<input id="phoneNum" required type="text" name="phoneNum"
+												placeholder="-을 제외한 전화번호를 입력하세요">
+											<button id="phoneBtn" type="button" class="formBtn">전송</button>
+											<div class="alert_box" id="phoneNumAlert">
+												<span class="msg good">전화번호 입력완료</span> <span
+													class="msg bad">정확한 전화번호를 입력하세요</span>
+											</div>
+										</div>
+										<div class="input_box" id="certificateBox">
+											<input id="certificate" disabled required type="text"
+												name="certificate">
+											<button id="certificateBtn" type="button" class="formBtn">인증</button>
+											<div class="alert_box" id="certificateAlert">
+												<span class="msg good">입력완료</span> <span class="msg bad">4개의
+													숫자를 입력하세요</span>
+											</div>
+										</div>
+										<div class="input_box" id="nicknameBox">
+											<label for="nickname">닉네임</label>
+											<div class="icon_box">
+												<i class="fas fa-user-circle"></i>
+											</div>
+											<input id="nickname" type="text" name="nickname" disabled
+												required placeholder="닉네임 입력" title="별명을 입력해주세요">
+											<div class="alert_box" id="nicknameAlert">
+												<span class="msg good">별명 입력완료</span> <span class="msg bad">한글과
+													영문 대 소문자를 사용해서 1~4글자를 입력해주세요.</span>
+											</div>
+										</div>
+										<div class="input_box" id="mailBox">
 											<label for="mail">E-mail</label>
 											<div class="icon_box">
 												<i class="fas fa-envelope"></i>
 											</div>
-											<input id="loginMail" autofocus required type="text"
-												name="email" placeholder="이메일">
+											<input id="mail" required disabled type="text" name="email"
+												placeholder="이메일">
+											<div class="alert_box" id="mailAlert">
+												<span class="msg good">이메일 입력완료</span> <span class="msg bad">정확한
+													이메일을 기입해주세요</span>
+											</div>
 										</div>
-										<div class="input_box" id="loginPasswordBox">
+										<div class="input_box" id="passwordBox">
 											<label for="password">Password</label>
 											<div class="icon_box">
 												<i class="fas fa-key"></i>
 											</div>
-											<input id="loginPassword" required type="password"
+											<input id="password" required disabled type="password"
 												name="password" placeholder="비밀번호">
+											<div class="alert_box" id="passwordAlert">
+												<span class="msg good">좋은 비밀번호입니다.</span> <span
+													class="msg bad">영문,숫자,특수문자를 혼용하여 8~16자를 입력해주세요.</span>
+											</div>
 										</div>
-									</div>
-									<button id="loginBtn">로그인</button>
-								</form>
+										<div class="input_box" id="recapchaBox">
+
+											<div class="g-recaptcha"
+												data-sitekey="6Lc0h1AUAAAAAHKNXTbxaJIhhnJb8YDjbNhwSPDR"
+												data-callback="verifyCallback"></div>
+
+										</div>
+										<button id="joinBtn">회원가입</button>
+									</form>
+								</div>
+								<!--회원가입 입력폼 끝-->
+								<!--로그인 입력폼 시작-->
+								<div id="loginInput" class="on">
+									<form action="login.jsp" method="post">
+										<div id="loginText">
+											<h1>"품"에 오신것을 환영해요!</h1>
+											<h2>
+												"품"은 서로 간 시간을 거래할 수 있도록 하여</br> 모두의 경쟁력을 높이는 플랫폼 서비스입니다.
+											</h2>
+										</div>
+										<div id="logininput_box">
+											<div class="input_box" id="loginEmailBox">
+												<label for="mail">E-mail</label>
+												<div class="icon_box">
+													<i class="fas fa-envelope"></i>
+												</div>
+												<input id="loginMail" autofocus required type="text"
+													name="email" placeholder="이메일">
+											</div>
+											<div class="input_box" id="loginPasswordBox">
+												<label for="password">Password</label>
+												<div class="icon_box">
+													<i class="fas fa-key"></i>
+												</div>
+												<input id="loginPassword" required type="password"
+													name="password" placeholder="비밀번호">
+											</div>
+										</div>
+										<button id="loginBtn">로그인</button>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<%
-					} else {
-				%>
-				<!--로그인했을때 히어로페이지 상단 링크에 회원가입 로그인 대신 내프로필과 프로필사진 닉네임이 나오도록 on클래스-->
-				<div id="loginBox" class="on">
-					<a href="">서비스등록</a> <a href="">내프로필</a> <a href="" class="mypage">
-						<img src="img/woosung.png" class="profile" /> <span><%=loginUser.getNickName()%><i
-							class="fas fa-angle-down"></i></span>
-					</a>
+					<%
+						} else {
+					%>
+					<!--로그인했을때 히어로페이지 상단 링크에 회원가입 로그인 대신 내프로필과 프로필사진 닉네임이 나오도록 on클래스-->
+					<div id="loginBox" class="on">
+						<div class="bell link">
+							<i class="fas fa-bell fa-1x"></i>
+							<article class="cRecentList news"> <header>
+							<h1>새소식</h1>
+							</header>
+							<div class="main _newsRegion">
+								<ul data-viewname="DNewsListView" class="news_list">
 
-					<ul class="mypage_drop">
-						<li><a href="#">계약</a></li>
-						<li><a href="#">코인</a></li>
-						<li><a href="#">찜목록</a></li>
-						<li><a href="#">차단 목록</a></li>
-						<li><a href="logout.jsp">로그아웃</a></li>
-					</ul>
-				</div>
+								</ul>
+							</div>
+							</article>
+						</div>
+						<a href="registerForm.jsp">품 요청/등록</a> <a href="">내프로필</a> <a
+							href="" class="mypage"> <img
+							src="<%=loginUser.getPhotoUrl()%>" class="profile"
+							onerror="this.src='img/profile/profile_img.png'" /> <span><%=loginUser.getNickName()%><i
+								class="fas fa-angle-down"></i></span>
+						</a>
 
-				<%
-					}
-				%>
+						<ul class="mypage_drop">
+							<li><a href="#">계약</a></li>
+							<li><a href="#">코인</a></li>
+							<li><a href="#">찜목록</a></li>
+							<li><a href="#">차단 목록</a></li>
+							<li><a href="logout.jsp">로그아웃</a></li>
+						</ul>
+					</div>
+
+					<%
+						}
+					%>
+				</div>
 				<p id="text">
 					여러분의 남는 시간을 시간이 부족한 다른사람에게 제공해보세요<br /> 저희 웹서비스 <span
 						class="emphasis">"폼"</span>은 여러분들의 시간을 서로 <span class="emphasis">공유</span>할
@@ -572,7 +622,7 @@ body {
 	<script>
 		var $mypage_drop = $(".mypage_drop");
 		var $mypage = $(".mypage");
-		$mypage.on('click',function(e) {
+		$mypage.on('click', function(e) {
 			e.preventDefault();
 			$mypage_drop.toggleClass("show");
 		})
