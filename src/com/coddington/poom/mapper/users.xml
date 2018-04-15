@@ -6,5 +6,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 <mapper namespace="users">
 
+	<select id="selectListAll" resultType="User">
+		SELECT no, email, password, name, nick_name nickName, phone, introduction,
+		coin, photo_url photoUrl, regdate
+		FROM users
+	</select>
 
 </mapper>

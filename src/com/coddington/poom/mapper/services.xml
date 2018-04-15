@@ -5,8 +5,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 >
 
 <mapper namespace="services">
-	<select id="selectOneByNo" parameterType="int" resultType="Service">
-		  
+	<select id="selectListAll"  resultType="Service">
+		  SELECT no, user_no userNo, title, area1, area2, detail_address1 detailAddress1, detail_address2 detailAddress2, latitude, longitude, poom, content, category, photo_url photoUrl, role, regdate
+		  FROM services
 	</select>
 
 </mapper>

@@ -7,4 +7,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="contractSchedules">
 
 
+	<select id="selectCountByContractNo" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM contract_schedules
+		WHERE contract_no=#{contactNo}
+	</select>
+
+
 </mapper>

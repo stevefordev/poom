@@ -14,5 +14,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		  FROM contracts
 		  WHERE service_no=#{serviceNo} AND status=#{status}
 	</select>
+	<select id="selectListByTakerNo" parameterType="Contract" resultType="Contract">
+		  SELECT no, giver_no giverNo, taker_no takerNo, service_no serviceNo, poom, status, 
+		  content, score_user scoreUser, 
+		  score_price scorePrice, score_kind scoreKind, score_knowhow scoreKnowhow, score_honest scoreHonest, 
+		  regdate
+		  FROM contracts
+		  WHERE taker_no=#{takerNo}
+	</select>
 
 </mapper>

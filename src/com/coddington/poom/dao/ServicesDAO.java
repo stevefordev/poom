@@ -8,25 +8,24 @@ import com.coddington.poom.util.SqlSessionUtil;
 import com.coddington.poom.vo.Service;
 
 public class ServicesDAO {
-	public static List<Service> getServiceList() {
-		List<Service> serviceList = null;
-		
+	public static List<Service> selectListAll() {
+		List<Service> list = null;
+
 		SqlSession session = null;
-		
+
 		try {
 			session = SqlSessionUtil.getSession();
-			
-			serviceList = session.selectList("services.selectLogin");
-			
+
+			list = session.selectList("services.selectListAll");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(session!=null) {
+			if (session != null) {
 				session.close();
-			}//if end
-		}//try~catch~finally end
-		
-		
-		return serviceList;
-	}//() end
+			} // if end
+		} // try~catch~finally end
+
+		return list;
+	}// () end
 }
