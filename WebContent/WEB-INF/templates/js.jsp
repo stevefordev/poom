@@ -11,3 +11,5 @@
 	};
 </script>
 <script src="js/header.js"></script>
+<script src="js/login_join_popup.js?a=201804162"></script>
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback'></script>

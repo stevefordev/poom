@@ -13,10 +13,6 @@
 <link rel="stylesheet" href="css/slick/slick-theme.css">
 <link rel="stylesheet" href="css/tui-date-picker.css">
 <style>
-body {
-	font-family: "Noto Sans KR", serif;
-}
-
 #content {
 	font-size: 19px;
 }
@@ -50,7 +46,7 @@ dl.section dd {
 	float: left;
 }
 
-input[type=text], input[type=number] {
+#registerService input[type=text], input[type=number] {
 	padding: 10px 20px;
 	margin: 0px 0px;
 	font-size: 16px;
@@ -61,7 +57,11 @@ input[type=text], input[type=number] {
 	height: 50px;
 }
 
-input[type=radio] {
+#registerService .requiredMsg {
+	color: red;
+}
+
+#registerService input[type=radio] {
 	width: 1.5em;
 	height: 1.5em;
 }
@@ -78,8 +78,12 @@ dl.role dd label {
 	cursor: pointer;
 }
 
+#registerService dl dd input.error {
+	border: 1px solid #f00;
+}
+
 /******************** start title 제목 ********************/
-dl.title dd input {
+#registerService dl.title dd input {
 	width: 100%;
 	margin-top: 10px;
 }
@@ -104,7 +108,7 @@ dl.region dd>div>input {
 }
 
 dl.region dd>div:nth-child(1)>input {
-	width: 760px;
+	width: 780px;
 	margin-right: 20px;
 	cursor: pointer;
 }
@@ -119,7 +123,7 @@ dl.region dd>div:nth-child(1)>button {
 	color: white;
 	font-weight: bold;
 	position: absolute;
-	top: 9px;
+	right: 0px;
 	cursor: pointer;
 }
 
@@ -187,7 +191,8 @@ dl.tag dd>ul>li>div.tag-editor-tag {
 	border-radius: 10px 0 0 10px;
 }
 
-dl.tag dd>ul>li input {
+#registerService dl.tag dd>ul>li input {
+	margin: 5px 0;
 	height: 40px;
 }
 /*자동완성 영역*/
@@ -331,7 +336,7 @@ dl.schedule dd .schedule_tab {
 
 dl.schedule dd .schedule_tab>span {
 	display: inline-block;
-	width: 200px;
+	width: 198px;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
@@ -543,7 +548,7 @@ dl.schedule div>button.schedule_add {
 
 /*선택된 일정 목록 테이블*/
 dl.schedule dd .schedule_view {
-	width: 450px;
+	width: 448px;
 	min-height: 570px;
 	float: left;
 	margin-left: 30px;
@@ -653,6 +658,14 @@ dl.schedule dd .schedule_view>table td:hover button {
 <body>
 	<%@ include file="WEB-INF/templates/header.jsp"%>
 	<form id="registerService" action="">
+		<input type="hidden" name='area1' id='area1'/> 
+		<input type="hidden" name='area2' id='area2'/>
+		<input type="hidden" name='latitude' id='latitude' /> 
+		<input type="hidden" name='longitude' id='longitude' />
+		<input type="hidden" name='scheduleList' />			
+		<input type="hidden" name='photo'/>
+		<input type="hidden" name='category'/>
+		
 		<dl class="section role">
 			<dt class="section_title">역할</dt>
 			<dd class="section_detail">
@@ -673,12 +686,13 @@ dl.schedule dd .schedule_view>table td:hover button {
 			<dt class="section_title">지역</dt>
 			<dd class="section_detail ">
 				<div>
-					<input id="detailAddress1" type="text" name="title"
+					<input id="detailAddress1" type="text" name="detailAddress1"
 						placeholder="특별시, 도, 군, 구, 동" readonly>
 					<button type="button" class="addr_search">주소검색</button>
 				</div>
 				<div>
-					<input id="detailAddress2" type="text" name="title" placeholder="">
+					<input id="detailAddress2" type="text" name="detailAddress2"
+						placeholder="상세 주소를 입력하세요. ex) 102동 1135호">
 				</div>
 				<div class="region_map">
 					<div id="map"></div>
@@ -700,7 +714,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 		<dl class="section tag">
 			<dt class="section_title">태그</dt>
 			<dd class="section_detail">
-				<input type="text" />
+				<input type="text" name='tag' />
 			</dd>
 		</dl>
 		<dl class="section photo">
@@ -714,8 +728,9 @@ dl.schedule dd .schedule_view>table td:hover button {
 			<dt class="section_title">품</dt>
 			<dd class="section_detail">
 				<input type="number" maxlength="5" min="1" max="65535"
-					placeholder="10" required> <i
-					class="fas fa-question-circle" title="품이란 ~~~~~~~~~ 품이란 ~~~~~~ 품이란"></i>
+					placeholder="10" value="10" name='poom' required> <i
+					class="fas fa-question-circle"
+					title="품이란 시간당 기본 가중치 입니다. 10품 X 2시간  = 20 코인"></i>
 			</dd>
 		</dl>
 		<dl class="section schedule">
@@ -832,33 +847,12 @@ dl.schedule dd .schedule_view>table td:hover button {
 	</form>
 	<%@ include file="WEB-INF/templates/footer.jsp"%>
 	<!-- 알림 탬플릿 -->
-	<script type="text/template" id="newsTemp">
-    <@ _.each(newsList,function(news){ @>
-    <li data-viewname="DNewsItemView" class="-unread">
-        <a href="#" class="_newsItem">
-                                <span class="item -thum">
-                                <img src="https://ssl.pstatic.net/cmstatic/webclient/dres/20180322173509/images/template/profile_60x60.png" width="40" height="40" alt="">
-                                </span>
-            <dl class="item -main">
-                <dt class="gSrOnly">새소식</dt>
-                <dd class="tit"> <strong> <span>싱숭샌&nbsp;</span>  <em> 댓글 <span class="comment">1</span>  </em></strong></dd>
-                <dt class="gSrOnly">내용 요약</dt>
-                <dd class="body "> [찜목록 위치] 투표 결과가 나왔습니다.</dd>
-                <dt class="gSrOnly">댓글</dt>
-                <dd class="comment">투표를 시작했습니다.</dd>
-                <dt class="gSrOnly">밴드명 및 글 작성 시간</dt>
-                <dd class="origin"><span>코딩턴 - 코딩의 여행을 떠나보자</span>13시간 전 </dd>
-            </dl>
 
-        </a>
-    </li>
-    <@})@>
-</script>
 	<script type="text/template" id="serviceImgTemp">
     <@ _.each(imageInfo.images,function(image, key){ @>
     <div>
         <img src="img/<@=imageInfo.category@>/<@=image@>"/>
-        <input type="checkbox" name="images[]" value="<@=image@>" id="image<@=key@>"/>
+        <input type="checkbox" name="images[]" value="<@=image@>" id="image<@=key@>" />
         <label for="image<@=key@>"></label>
     </div>
     <@})@>
@@ -886,8 +880,8 @@ dl.schedule dd .schedule_view>table td:hover button {
     <@})@>
 </script>
 	<script type="text/template" id="selectedScheduleTemp">
-    <@ _.each(scheduleList.repeatDates,function(schedule, key){
-    if(schedule.times.length>0) { console.log(schedule.times)@>
+    <@ _.each(scheduleList.repeatDates,function(schedule, key){@> 
+    <@ if(schedule.times.length>0) { console.log(schedule.times)@>
     <@ _.each(schedule.times,function(time){ @>
     <tr>
         <td data-type='repeatDates' data-week=<@=key@> data-time=<@=time@>> [반복] 매주 <@=schedule.kor@> / <@=('0' + time).slice(-2)@>-<@=('0' + (time+1)).slice(-2)@> 시<button type="button">X</button></td>
@@ -905,7 +899,6 @@ dl.schedule dd .schedule_view>table td:hover button {
 </script>
 
 	<%@ include file="WEB-INF/templates/js.jsp"%>
-	<script src="js/jquery.validate.min.js"></script>
 	<script src="js/moment-with-locales.min.js"></script>
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=555baa134395660cb83af73dbe87d218&libraries=services,clusterer,drawing"></script>
@@ -918,10 +911,21 @@ dl.schedule dd .schedule_view>table td:hover button {
 	<script src="js/tui-date-picker.min.js"></script>
 	<script src="js/ckeditor/ckeditor.js?a=3"></script>
 	<script src="js/ckeditor/config.js?a=4"></script>
-
 	<script>
 		$(function() {
-
+			var $title = $("input[name=title]");
+			var $area1 = $("input[name=area1]");
+			var $area2 = $("input[name=area2]");
+			var $detailAddress1 = $("#detailAddress1");
+			var $detailAddress2 = $("#detailAddress2");
+			var $latitude = $("input[name=latitude]");
+			var $longitude = $("input[name=longitude]");
+			var $category = $("input[name=category]");
+			var $tag = $("input[name=tag]");			
+			var $poom = $("input[name=poom]");			
+			var $photo = $("input[name=photo]");
+			var $contents = $("input[name=contents]");
+			var $scheduleList = $("input[name=scheduleList]");
 			/*
 			 *  지도 영역
 			 *  kakao api
@@ -998,8 +1002,6 @@ dl.schedule dd .schedule_view>table td:hover button {
 				});
 			}
 
-			var $detailAddress1 = $("#detailAddress1");
-			var $detailAddress2 = $("#detailAddress2");
 			function displayAddrInfo(result, status) {
 				if (status === daum.maps.services.Status.OK) {
 					console.log(result);
@@ -1010,12 +1012,17 @@ dl.schedule dd .schedule_view>table td:hover button {
 							console.log(result[i].address_name);
 							console.log(result[i].region_1depth_name);
 							console.log(result[i].region_2depth_name);
-							$detailAddress1.val(result[i].region_1depth_name);
+							
+							$area1.val(result[i].region_1depth_name);
+							$area2.val(result[i].region_2depth_name);
 							//$detailAddress2.val(result[i].region_2depth_name);
 							break;
 						}
 					}
-					marker.setPosition(map.getCenter());
+					var center = map.getCenter();
+					$latitude.val(center.getLat());
+					$longitude.val(center.getLng()); 
+					marker.setPosition(center);
 				}
 			}//end displayAddrInfo()
 
@@ -1056,9 +1063,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 				map.setCenter(new daum.maps.LatLng(lat, lng));
 			}
 
-			//
-			var $detailAddress1 = $("#detailAddress1");
-			var $detailAddress2 = $("#detailAddress2");
+			
 			$("#detailAddress1,.addr_search").click(
 					function() {
 						new daum.Postcode({
@@ -1110,8 +1115,8 @@ dl.schedule dd .schedule_view>table td:hover button {
 			// end map *******************************************************************************/
 
 			//
-			var $tagInput = $('.section.tag input');
 			var $serviceButton = $(".section.service button");
+			$category.val('edu');
 			/*
 			 *service button
 			 * */
@@ -1122,8 +1127,9 @@ dl.schedule dd .schedule_view>table td:hover button {
 
 				//서비스 버튼에 따라 태그 인풋 기본 입력 변경
 				removeAllTags();
-				$tagInput.tagEditor('addTag', $(this).text());
+				$tag.tagEditor('addTag', $(this).text());
 				serviceImageLoad($(this).data('category'));
+				$category.val($(this).data('category'));
 			})
 
 			/*
@@ -1131,8 +1137,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 			 * https://goodies.pixabay.com/jquery/tag-editor/demo.html
 			 * http://api.jqueryui.com/autocomplete/#option-source
 			 * */
-			$tagInput
-					.tagEditor({
+			$tag.tagEditor({
 						initialTags : [ '#교육' ], // 초기 입력
 						maxTags : 5,
 						maxLength : 10,
@@ -1197,16 +1202,16 @@ dl.schedule dd .schedule_view>table td:hover button {
 
 			var $sectionTagDetail = $('.section.tag>.section_detail');
 			$sectionTagDetail.on('click', function() {
-				console.log($tagInput.tagEditor('getTags')[0].tags.length);
-				if ($tagInput.tagEditor('getTags')[0].tags.length == 5) {
+				console.log($tag.tagEditor('getTags')[0].tags.length);
+				if ($tag.tagEditor('getTags')[0].tags.length == 5) {
 					alert("태그는 최대 5개까지 입력 가능합니다.");
 				}
 			})
 			// 태그 전체 삭제
 			function removeAllTags() {
-				var tags = $tagInput.tagEditor('getTags')[0].tags;
+				var tags = $tag.tagEditor('getTags')[0].tags;
 				for (i = 0; i < tags.length; i++) {
-					$tagInput.tagEditor('removeTag', tags[i]);
+					$tag.tagEditor('removeTag', tags[i]);
 				}
 			}//end removeAllTags
 
@@ -1282,9 +1287,12 @@ dl.schedule dd .schedule_view>table td:hover button {
 										if ($thisInput.val() == this.value) {
 											$(this).prop("checked",
 													!isAlreadyChecked);
-										} else {
+										} 
+										/*
+										else {
 											$(this).prop("checked", false);
 										}
+										*/
 									})
 
 									// 체크된 이미지를 전부 검색하여 json 형태로 보관 (여러장 선택 가능할때 더 의미가 있다)
@@ -1295,6 +1303,8 @@ dl.schedule dd .schedule_view>table td:hover button {
 										}
 									}).get();
 
+									_.uniq(vals);
+									$photo.val(vals);
 									console.log(JSON.stringify(vals));
 								});
 			} //end imageBoxAddListener
@@ -1657,26 +1667,48 @@ dl.schedule dd .schedule_view>table td:hover button {
 
 			/*textarea 에디터 입력*/
 			CKEDITOR.replace('contents', {});
-
+/*
+ 			var $title = $("input[name=title]");
+			var $area1 = $("input[name=area1]");
+			var $area2 = $("input[name=area2]");
+			var $detailAddress1 = $("#detailAddress1");
+			var $detailAddress2 = $("#detailAddress2");
+			var $latitude = $("input[name=latitude]");
+			var $longitude = $("input[name=longitude]");
+			var $category = $("#category");
+			var $tag = $("input[name=tag]");			
+			var $poom = $("input[name=poom]");			
+			var $photo = $("input[name=photo]");
+			var $contents = $("input[name=contents]");
+			var $scheduleList = $("input[name=scheduleList]");
+ */
 			/*유효성 검사*/
-			$("#registerService").validate({
-				ignore : [],
-				rules : {
-					contents : {
-						required : function() {
-							CKEDITOR.instances.contents.updateElement();
-						},
-						minlength : 10
-					}
-				},
-				errorPlacement : function(error, element) {
-					if (element.attr("name") == "editor1") {
-						error.insertBefore("textarea#editor1");
-					} else {
-						error.insertBefore(element);
-					}
-				}
-			});//end validate
+			$("#registerService").submit(function() { 				
+				console.log($title.val());
+				console.log($area1.val());
+				console.log($area2.val());
+				console.log($detailAddress1.val());
+				console.log($detailAddress2.val());
+				console.log($latitude.val());
+				console.log($longitude.val());				
+				console.log($category.val());
+				console.log($tag.val());
+				console.log($poom.val());
+				console.log($photo.val());
+				console.log($contents.val());
+				console.log($scheduleList.val());
+ 
+				
+				return false;
+			});
+			
+			function checkTitle() {
+				if ($title.val() == undefined || $title.val().length > 0) {
+					$title.focus();
+					return true
+				} 
+			}
+			
 
 		}); //end $(function())
 	</script>

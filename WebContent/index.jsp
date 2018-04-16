@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/fontawesome-all.css" />
 <link rel="stylesheet" href="css/notosanskr.css" />
 <link rel="stylesheet" href="css/giver_card_step1.css">
-<link rel="stylesheet" href="css/login_join_popup.css">
+<link rel="stylesheet" href="css/login_join_popup.css?a=201804161">
 <!--slick 이미지슬라이드 css-->
 <link rel="stylesheet" type="text/css" href="css/slick/slick.css" />
 <!--Add the new slick-theme.css if you want the default styling-->
@@ -126,21 +126,30 @@ body {
 }
 /*회원가입 로그인을 묶은 div css*/
 #linkBox {
+	width: 400px;
+	height: 60px;
 	position: absolute;
-	right: 60px;
-	top: 60px;
-	display: none;
+	right: 20px;
+	top: 20px;
+	background: red;
 }
 
-#linkBox.on {
-	display: block;
-}
-
-#linkBox a {
+#linkBox>a {
 	color: white;
 	text-decoration: none;
-	width: 30px;
+	width: 60px;
+	position: absolute;
+}
+
+#linkBox>a:nth-child(1) {
 	margin-right: 10px;
+	bottom: 8px;
+	right: 120px;
+}
+
+#linkBox>a:nth-child(2) {
+	right: 50px;
+	bottom: 8px;
 }
 /*히어로페이지 문구*/
 #heroImageBox p#text {
@@ -157,30 +166,31 @@ body {
 	color: #349581;
 	font-weight: bold;
 }
+
 #header .bell {
 	width: 24px;
-    color: #f2c641;
-    font-size: 20px;
-    cursor: pointer;
-    
+	color: #f2c641;
+	font-size: 20px;
+	cursor: pointer;
 }
+
 #header .bell>i {
 	position: absolute;
-	left:0px;
+	left: 0px;
 	bottom: 4px;
 }
 /*로그인했을시 내프로필과 프로필사진 닉네임이 있는 div*/
 #loginBox {
-	display: none;
-	width: 400px;
+	width: 360px;
+	height: 60px;
 	height: 60px;
 	position: absolute;
 	right: 20px;
 	top: 20px;
-}
-
-#loginBox.on {
-	display: block;
+	background: pink;
+	position: absolute;
+	right: 20px;
+	top: 20px;
 	background: pink;
 }
 
@@ -214,14 +224,13 @@ body {
 #loginBox .mypage {
 	position: absolute;
 	height: 60px;
-	width: 200px;
+	width: 156px;
 }
 
 #loginBox .mypage .profile {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
-	border: 1px solid #424242;
 	position: absolute;
 	left: 0px;
 	bottom: 0px;
@@ -232,7 +241,7 @@ body {
 	position: absolute;
 	bottom: 0px;
 	left: 66px;
-	width: 140px;
+	width: 90px;
 	height: 22px;
 }
 
@@ -355,8 +364,7 @@ body {
 									<div class="tab" id="joinTab">
 										<h1>회원가입</h1>
 									</div>
-									<!--
-                         -->
+									<!-- -->
 									<div class="tab on" id="loginTab">
 										<!--디스플레이 인라인플록으로 수평정렬을 해서 주석처리로 탭사이 간격을 줄임-->
 										<h1>로그인</h1>
@@ -509,8 +517,8 @@ body {
 						<a href="registerForm.jsp">품 요청/등록</a> <a href="">내프로필</a> <a
 							href="" class="mypage"> <img
 							src="<%=loginUser.getPhotoUrl()%>" class="profile"
-							onerror="this.src='img/profile/profile_img.png'" /> <span><%=loginUser.getNickName()%><i
-								class="fas fa-angle-down"></i></span>
+							onerror="this.src='img/profile/profile_img.png'" /> <span><%=loginUser.getNickName()%>
+								<i class="fas fa-angle-down"></i></span>
 						</a>
 
 						<ul class="mypage_drop">
@@ -617,7 +625,7 @@ body {
 	<script type="text/javascript" src="js/slick/slick.min.js"></script>
 	<script
 		src='https://www.google.com/recaptcha/api.js?onload=onloadCallback'></script>
-	<script src="js/login_join_popup.js"></script>
+	<script src="js/login_join_popup.js?a=201804162"></script>
 	<script src="js/giver_card_step1.js"></script>
 	<script>
 		var $mypage_drop = $(".mypage_drop");

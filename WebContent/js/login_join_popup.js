@@ -18,7 +18,7 @@ $("#loginTab").on("click",function (e) {
 
     //로그인탭 클릭할시 탭색깔 밝은색으로 변경
     $("#loginTab").addClass("on");
-    $("#joinTab").removeClass("on");
+    $("#joinTab").removeClass("on"); 
 });
 $("#joinTab").on("click",function (e) {
     $("#joinInput").addClass("on");
@@ -153,7 +153,7 @@ $("#joinContent").submit(function () {
 $("#heroJoinBtn").click(function (e) {
     //a요소 클릭시 새로고침되는것을 막기위해 preventDefault사용
     e.preventDefault();
-
+    console.log("heroJoinBtn");
     //a요소중 회원가입클릭시 회원가입이 활성화된상태로 팝업이뜨도록하기위해
     //addclass removeclass사용
     $("#joinInput").addClass("on");
@@ -161,23 +161,26 @@ $("#heroJoinBtn").click(function (e) {
     $("#loginTab").removeClass("on");
     $("#joinTab").addClass("on");
 
+    //$("body").css("overflow" ,"hidden");
+    
     //팝업창 띄우기
     $("#popupBackground").show();
 });
 $("#heroLoginBtn").click(function (e) {
     e.preventDefault();
-
+    console.log("heroLoginBtn");
     $("#joinInput").removeClass("on");
     $("#loginInput").addClass("on");
     $("#loginTab").addClass("on");
     $("#joinTab").removeClass("on");
-
+    //$("body").css("overflow" ,"hidden");
     $("#popupBackground").show();
 });
 
 //popup을 클릭하면 popup이 사라짐
 $("#popupBackground").click(function () {
     $("#popupBackground").hide();
+    //$("body").attr("overflow" ,"visible");
 });
 //팝업창을 제외한 뒷배경을 클릭했을때 팝업창이 사라지게 하기위해서 이벤트전파를 막음
 $("#loginJoinWrap").click(function (e) {

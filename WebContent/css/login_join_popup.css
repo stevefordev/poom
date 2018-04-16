@@ -53,20 +53,20 @@
     background: #f1f1f1;
 }
 /*탭을 클릭했을시 색 변경*/
-h2{
+#loginJoinWrap h2{
     height: 30px;
 }
-.input_box{
+#loginJoinWrap .input_box{
     position: relative;
     height: 82px;
 }
 /*이름 닉네임 전화번호 등 회원가입 input박스 각각의 박스*/
-.msg{
+#loginJoinWrap .msg{
     font-size: 15px;
     font-weight: normal;
     display: none;
 }
-#phoneNum{
+#loginJoinWrap #phoneNum{
     width: 244px;
     margin-right: 10px;
 }
@@ -83,7 +83,7 @@ h2{
     cursor: pointer;
 }
 /*회원가입 버튼 css*/
-.formBtn{
+#loginJoinWrap .formBtn{
     width: 50px;
     height: 35px;
     background-color: crimson;
@@ -95,24 +95,19 @@ h2{
     cursor: pointer;
 }
 /*전화번호 전송,인증 버튼css*/
-.formBtn, #phoneNum{
+#loginJoinWrap .formBtn, #phoneNum{
     vertical-align: middle;
 }
 /*전화번호 인풋박스와 버튼 수평정렬*/
-label{
+#loginJoinWrap label{
     display: inherit;
     height: 23px;
-}
-input{
-    width: 300px;
-    height: 30px;
-    padding-left: 5px;
-}
-#certificate{
+} 
+#loginJoinWrap #certificate{
     width: 280px;
     margin-right: 10px;
 }
-.icon_box{
+#loginJoinWrap .icon_box{
     float: left;
     width: 35px;
     height: 34px;
@@ -183,7 +178,7 @@ input{
     height: 90px;
     /*background-color: crimson;*/
 }
-input{
+#loginJoinWrap input{
     margin: auto;
     width: 310px;
     height: 30px;
@@ -263,5 +258,4 @@ input{
 }
 #passwordAlert.bad .bad{
     display: inline;
-}
-/*유효성검사 문구 css*/
+} 

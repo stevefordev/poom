@@ -192,19 +192,32 @@ body input {
     position: absolute;
     right: 20px;
 }
+
+#linkBox>a {
+	color: white;
+	text-decoration: none;
+	width: 60px;
+	position: absolute;
+}
+
+#linkBox>a:nth-child(1) {
+	margin-right: 10px;
+	bottom: 8px;
+	right: 120px;
+}
+
+#linkBox>a:nth-child(2) {
+	right: 50px;
+	bottom: 8px;
+}
  
 /*로그인했을시 내프로필과 프로필사진 닉네임이 있는 div*/
 #loginBox {
-	display: none;
-	width: 400px;
+	width: 360px;
 	height: 60px;
 	position: absolute;
 	right: 20px;
 	top: 20px;
-}
-
-#loginBox.on {
-	display: block;
 	background: pink;
 }
 
@@ -238,14 +251,13 @@ body input {
 #loginBox .mypage {
 	position: absolute;
 	height: 60px;
-	width: 200px;
+	width: 156px;
 }
 
 #loginBox .mypage .profile {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
-	border: 1px solid #424242;
 	position: absolute;
 	left: 0px;
 	bottom: 0px;
@@ -256,7 +268,7 @@ body input {
 	position: absolute;
 	bottom: 0px;
 	left: 66px;
-	width: 140px;
+	width: 90px;
 	height: 22px;
 }
 
