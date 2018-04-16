@@ -28,9 +28,11 @@ $(".bell").click(function () {
 })
 
 var $mypage_drop = $(".mypage_drop");
-var $mypage = $(".mypage>img,.mypage>div>*");
-$mypage.click(function () {
+var $mypage = $(".mypage");
+$mypage.click(function (e) {
     $mypage_drop.toggleClass("show");
+    e.preventDefault();
+    
 })
 
 var $bell = $(".bell");
