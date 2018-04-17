@@ -662,7 +662,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 </head>
 <body>
 	<%@ include file="WEB-INF/templates/header.jsp"%>
-	<form id="registerService" action="registerService.jsp">
+	<form id="registerService" method="post" action="registerService.jsp">
 		<input type="hidden" name='area1' id='area1' /> <input type="hidden"
 			name='area2' id='area2' /> <input type="hidden" name='latitude'
 			id='latitude' /> <input type="hidden" name='longitude'

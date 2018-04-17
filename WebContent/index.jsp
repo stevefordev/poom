@@ -514,7 +514,7 @@ body {
 							</div>
 							</article>
 						</div>
-						<a href="registerForm.jsp">품 요청/등록</a> <a href="">내프로필</a> <a
+						<a href="registerServiceForm.jsp">품 요청/등록</a> <a href="">내프로필</a> <a
 							href="" class="mypage"> <img
 							src="<%=loginUser.getPhotoUrl()%>" class="profile"
 							onerror="this.src='img/profile/profile_img.png'" /> <span><%=loginUser.getNickName()%>

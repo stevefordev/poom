@@ -5,9 +5,29 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 >
 
 <mapper namespace="services">
-	<select id="selectListAll"  resultType="Service">
-		  SELECT no, user_no userNo, title, area1, area2, detail_address1 detailAddress1, detail_address2 detailAddress2, latitude, longitude, poom, content, category, photo_url photoUrl, role, regdate
-		  FROM services
+	<insert id="insert" parameterType="Service">
+		INSERT INTO services (no, user_no, title, area1, area2,
+		detail_address1, detail_address2, latitude, longitude, poom, content,
+		category, photo_url, role, regdate)
+		VALUES (services_seq.nextval,
+		#{userNo}, #{title}, #{area1}, #{area2}, #{detailAddress1},
+		#{detailAddress2}, #{latitude}, #{longitude}, #{poom}, #{content},
+		#{category}, #{photoUrl}, #{role}, systimestamp)
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT services_seq.currval FROM dual
+		</selectKey>
+	</insert>
+	
+	<select id="selectListAll" resultType="Service">
+		SELECT no, user_no userNo,
+		title, area1, area2, detail_address1
+		detailAddress1, detail_address2
+		detailAddress2, latitude, longitude,
+		poom, content, category, photo_url
+		photoUrl, role, regdate
+		FROM services
 	</select>
 
 </mapper>
+
+
