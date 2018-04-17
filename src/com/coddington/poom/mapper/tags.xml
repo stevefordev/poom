@@ -11,10 +11,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		FROM tags
 		WHERE name LIKE '%'||#{name}||'%'
 	</select>
-	<select id="selectListByName" resultType="Tag" parameterType="String">
+	<select id="selectByName" resultType="Tag" parameterType="String">
 		SELECT no, name, regdate
 		FROM tags
 		WHERE name = #{name}
+	</select>
+	<select id="selectListByServiceNo" resultType="Tag" parameterType="int">
+		SELECT t.no, t.name, t.regdate
+		FROM tags t, service_tags st, services s
+		WHERE
+		t.no = st.tag_no AND st.service_no = s.no AND s.no = #{serviceNo}
 	</select>
 	<insert id="insert" parameterType="String">
 		INSERT INTO tags(no, name, regdate)

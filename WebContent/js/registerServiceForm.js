@@ -223,7 +223,7 @@ $(".section.service button").click(function() {
  * http://api.jqueryui.com/autocomplete/#option-source
  */
 $tag.tagEditor({
-  // initialTags: ['#교육'], // 초기 입력
+  initialTags: ['#교육'], // 초기 입력
   maxTags: 5,
   maxLength: 10,
   delimiter: ', ', /* space and comma */
@@ -231,7 +231,6 @@ $tag.tagEditor({
   onChange: function(field, editor, tags) {
     console.log(tags);
     console.log(field);
-
   },
   beforeTagSave: function(field, editor, tags, tag, val) {
 
@@ -241,7 +240,6 @@ $tag.tagEditor({
     var replace = val.replace(/[^a-z0-9ㄱ-힣]/gi, '');
     if (replace.length > 0) {
       console.log(replace);
-
       getTagIdOrInsert(replace);
 
       return '#' + replace;
@@ -303,7 +301,9 @@ $tag.tagEditor({
   }
 // end autocomplete
 });
-$tag.tagEditor('addTag', '#교육');
+//인풋태그 요소를 만든다. 태그가 추가 될때마다 계속 생성
+createInputTags(62,'교육');
+// $tag.tagEditor('addTag', '#교육');
 
 var $sectionTagDetail = $('.section.tag>.section_detail');
 /*
@@ -331,18 +331,22 @@ function getTagIdOrInsert(name) {
     },
     success: function(data) {
       console.log(data);
-
-      $("<input></input>").attr({
-        type: "hidden",
-        name: "tags",
-        value: data.no,
-        'data-tag': '#' + data.name
-      }).appendTo($registerService);
+      createInputTags(data.no, data.name);
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(textStatus);
     }
   });
+}
+
+function createInputTags(tagId, name) {
+  console.log('createInputTags');
+  $("<input></input>").attr({
+    type: "hidden",
+    name: "tags",
+    value: tagId,
+    'data-tag': '#' + name
+  }).appendTo($registerService);
 }
 // end tags
 // *******************************************************************************/
@@ -362,10 +366,10 @@ function serviceImageLoad(category) {
     'images': ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
   };
   var serviceImgTemp = _.template($("#serviceImgTemp").html());
-  var weeksMarkup = serviceImgTemp({
+  var imagesMarkup = serviceImgTemp({
     "imageInfo": imageInfo
   });
-  $imageBox.html(weeksMarkup);
+  $imageBox.html(imagesMarkup);
   // slick 이 준비되면 이미지 박스를 보여준다
   // $imageBox.on('init', function () {
   // $imageBox.css({visibility: 'visible'});
@@ -420,8 +424,7 @@ function imageBoxAddListener() {
             // 체크된 이미지를 전부 검색하여 json 형태로 보관 (여러장 선택 가능할때 더 의미가 있다)
             var vals = $inputCheckboxImges.filter(':checked').map(
                     function() {
-                      if (this.id.length > 0) { return $category.val() + '/'
-                              + this.value; }
+                      if (this.id.length > 0) { return this.value; }
                     }).get();
 
             _.uniq(vals);
@@ -794,7 +797,13 @@ $('dl.schedule dd .schedule_view> table').on('click', 'button', function() {
 // *******************************************************************************/
 /* textarea 에디터 입력 */
 
-CKEDITOR.replace('contents', {});
+CKEDITOR.replace('contents', {
+  on: {
+    instanceReady : function(evt) {
+      //evt.editor.setData("<strong>test</strong>");
+    }
+  }
+});
 // end
 // editor*******************************************************************************/
 

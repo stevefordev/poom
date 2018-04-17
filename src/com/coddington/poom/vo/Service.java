@@ -32,10 +32,11 @@ public class Service {
 
     private Category(int num) {
       this.num = num;
+
     }
 
-    public String getName() {
-      return String.valueOf(num);
+    public int getNum() {
+      return this.num;
     }
   }
 
@@ -72,26 +73,41 @@ public class Service {
     return category;
   }
 
+  public String getCategoryEng() {
+    String result = "";
+    for (Category c : Category.values()) {
+      if (c.num == category)
+        result = c.name().toLowerCase();
+    }
+    return result;
+  }
+
   public void setCategory(int category) {
     this.category = category;
   }
 
   public void setCategory(String category) {
+
     switch (category) {
       case "edu":
-        this.category = 1;
+        this.category = Category.EDU.num;
         break;
       case "house":
-        this.category = 2;
+        this.category = Category.HOUSE.num;
         break;
       case "delivery":
-        this.category = 3;
+        this.category = Category.DELIVERY.num;
         break;
     }
   }
 
+
   public int getRole() {
     return role;
+  }
+
+  public char getRoleChar() {
+    return role == 1 ? 'g' : 't';
   }
 
   public void setRole(int role) {
@@ -100,6 +116,7 @@ public class Service {
 
   // g(giver) = 1, t(taker) = 2
   public void setRole(String r) {
+    // @steve 차라리 디비 컬럼 자료형을 char 하는것이 더 나을듯
     this.role = r.equals("g") ? 1 : 2;
   }
 
@@ -185,7 +202,7 @@ public class Service {
 
   @Override
   public String toString() {
-      // TODO Auto-generated method stub
-      return FieldUtil.getAllFields(this).toString();
-  } 
+    // TODO Auto-generated method stub
+    return FieldUtil.getAllFields(this).toString();
+  }
 }

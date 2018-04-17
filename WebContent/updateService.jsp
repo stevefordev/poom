@@ -37,6 +37,7 @@
 
   //post방식의 한글처리
   request.setCharacterEncoding("UTF-8");
+  String serviceNoStr = request.getParameter("serviceNo");
   String role = request.getParameter("role");
   String title = request.getParameter("title");
   String area1 = request.getParameter("area1");
@@ -57,7 +58,9 @@
   User loginUser = (User) session.getAttribute(User.LOGIN_USER);
 
   Service service = new Service();
+  service.setNo(Integer.parseInt(serviceNoStr));
   service.setUserNo(loginUser.getNo());
+  
   service.setTitle(title);
   service.setRole(role);
   service.setArea1(area1);
@@ -74,8 +77,9 @@
   System.out.println(service.toString());
 
   // 서비스 입력
-  ServicesDAO.insert(service);
+  ServicesDAO.update(service);
 
+  ServiceTagsDAO.deleteByServiceNo(service.getNo());
   // 서비스 태그 입력
   // 태그 입력 당시에 ajax 로  새로 입련된 태그에 대해서 먼저 삽입하고
   // 폼 서브밋 당시에는 태그 no 만 가지고 와서 servicetag 에 정보 삽입
@@ -107,7 +111,8 @@
       schedule.setServiceDay(eachSchedule.getServiceDay());
     }
 
-    SchedulesDAO.insert(schedule);
+    //수정 필요
+//    SchedulesDAO.insert(schedule);
   }
   response.sendRedirect("index.jsp");
 %>

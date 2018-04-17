@@ -119,7 +119,7 @@ public class DummyUtil {
 			contract.setServiceNo(serviceNo);
 			contract.setStatus(st);
 			List<Contract> contractList = ContractsDAO.selectListByServiceNo(contract);
-			List<Schedule> scheduleList = SchedulesDAO.selectScheduleList(serviceNo);
+			List<Schedule> scheduleList = SchedulesDAO.selectListByServiceNo(serviceNo);
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String dateInString = "2018-04-20 00:00:00";

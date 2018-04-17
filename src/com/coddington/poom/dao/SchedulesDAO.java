@@ -7,8 +7,8 @@ import com.coddington.poom.vo.Schedule;
 
 public class SchedulesDAO {
 
-  public static List<Schedule> selectScheduleList(int no) {
-    
+  public static List<Schedule> selectListByServiceNo(int no) {
+
     List<Schedule> list = null;
     SqlSession session = null;
 
@@ -26,7 +26,7 @@ public class SchedulesDAO {
   }// () end
 
   public static int insert(Schedule schedule) {
-    
+
     int result = 0;
     SqlSession session = null;
 

@@ -63,7 +63,7 @@ public class TagsDAO {
 
     try {
       session = SqlSessionUtil.getSession();
-      result = session.selectOne("tags.selectListByName", name);
+      result = session.selectOne("tags.selectByName", name);
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
@@ -73,5 +73,24 @@ public class TagsDAO {
     } // try~catch~finally end
 
     return result;
+  }
+
+  public static List<Tag> selectListByServiceNo(int servieNo) {
+
+    List<Tag> list = null;
+    SqlSession session = null;
+
+    try {
+      session = SqlSessionUtil.getSession();
+      list = session.selectList("tags.selectListByServiceNo", servieNo);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (session != null) {
+        session.close();
+      } // if end
+    } // try~catch~finally end
+
+    return list;
   }
 }

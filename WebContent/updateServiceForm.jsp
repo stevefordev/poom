@@ -1,3 +1,12 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="com.coddington.poom.vo.Schedule"%>
+<%@page import="com.coddington.poom.dao.SchedulesDAO"%>
+<%@page import="com.coddington.poom.dao.TagsDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.coddington.poom.vo.Tag"%>
+<%@page import="com.coddington.poom.dao.ServicesDAO"%>
+<%@page import="com.coddington.poom.vo.Service"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -138,16 +147,17 @@ dl.region dd .region_map {
 	border-radius: 6px;
 	box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.3);
 }
+
 #regionMainList {
-    width: 310px;
-    height: 128px;
-    background: #424242;
+	width: 310px;
+	height: 128px;
+	background: #424242;
 }
 
 #regionSubList {
-    width: 310px;
-    height: 128px;
-    background: #b4b4b4;
+	width: 310px;
+	height: 128px;
+	background: #b4b4b4;
 }
 /*end region*/
 
@@ -181,6 +191,7 @@ dl.service dd>button.on {
 dl.tag {
 	overflow: hidden;
 }
+
 dl.tag dd>input {
 	display: none;
 }
@@ -232,10 +243,10 @@ dl.tag dd>ul>li>div.tag-editor-tag {
 }
 
 #registerService dl.section.tag>dd.section_info {
-	margin-left:90px;
-	color : #626262;
+	margin-left: 90px;
+	color: #626262;
 	font-size: 16px;
-	height:30px;
+	height: 30px;
 }
 /******************** section photo 사진********************/
 dl.photo {
@@ -682,19 +693,45 @@ dl.schedule dd .schedule_view>table td:hover button {
 </head>
 <body>
 	<%@ include file="WEB-INF/templates/header.jsp"%>
-	<form id="registerService" method="post" action="registerService.jsp">
-		<input type="hidden" name='area1' id='area1' /> <input type="hidden"
-			name='area2' id='area2' /> <input type="hidden" name='latitude'
-			id='latitude' /> <input type="hidden" name='longitude'
-			id='longitude' /> <input type="hidden" name='scheduleList' /> <input
-			type="hidden" name='photo' /> <input type="hidden" name='category' />
-
+	<%
+	  	String noStr = request.getParameter("no");
+		Service serviced = new Service();
+		serviced.setNo(Integer.parseInt(noStr));
+		serviced.setUserNo(loginUser.getNo());
+		Service service = ServicesDAO.selectByServiceNoAndUserNo(serviced);
+		
+		List<Tag> tags = TagsDAO.selectListByServiceNo(service.getNo());
+		
+		List<Schedule> schedules = SchedulesDAO.selectListByServiceNo(service.getNo());
+		ObjectMapper mapper = new ObjectMapper();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		mapper.setDateFormat(sdf);
+		String scheduleJson = mapper.writeValueAsString(schedules);
+		
+	%>
+	<form id="registerService" method="post" action="updateService.jsp">
+		
+		<input type="hidden" name='serviceNo' id='serviceNo' value='<%=noStr %>'/>
+		<input type="hidden" name='area1' id='area1' value='<%=service.getArea1() %>'/> 
+		<input type="hidden" name='area2' id='area2' value='<%=service.getArea2() %>'/> 
+		<input type="hidden" name='latitude' id='latitude' value='<%=service.getLatitude() %>'/> 
+		<input type="hidden" name='longitude' id='longitude' value='<%=service.getLongitude() %>'/> 
+		<input type="hidden" name='scheduleList' value='<%=scheduleJson %>'/> 
+		<input type="hidden" name='photo' value='<%=service.getPhotoUrl() %>'/> 
+		<input type="hidden" name='category' value='<%=service.getCategoryEng() %>'/>
+		
+		<%  for(Tag tag: tags) {%>
+		<input type="hidden" name='tags' data-tag='<%=tag.getName() %>' value='<%=tag.getNo() %>'/>
+		<%} %>
+		
 		<dl class="section role">
 			<dt class="section_title">역할</dt>
 			<dd class="section_detail">
-				<input type="radio" id="roleGiver" name="role" value="g" checked>
-				<label for="roleGiver">품을 주고 싶어요</label> <input type="radio"
-					id="roleTaker" name="role" value="t"> <label
+				<input type="radio" id="roleGiver" name="role" value="g"
+					<%=service.getRoleChar() == 'g' ? "checked" : ""%>> <label
+					for="roleGiver">품을 주고 싶어요</label> <input type="radio"
+					id="roleTaker" name="role" value="t"
+					<%=service.getRoleChar() == 't' ? "checked" : ""%>> <label
 					for="roleTaker">품을 받고 싶어요</label>
 			</dd>
 		</dl>
@@ -702,7 +739,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 			<dt class="section_title">제목</dt>
 			<dd class="section_detail">
 				<input class="title" type="text" name="title"
-					placeholder="내용을 입력해주세요" required>
+					placeholder="내용을 입력해주세요" value='<%=service.getTitle()%>' required>
 			</dd>
 		</dl>
 		<dl class="section region">
@@ -710,12 +747,14 @@ dl.schedule dd .schedule_view>table td:hover button {
 			<dd class="section_detail ">
 				<div>
 					<input id="detailAddress1" type="text" name="detailAddress1"
-						placeholder="특별시, 도, 군, 구, 동" readonly="readonly">
+						placeholder="특별시, 도, 군, 구, 동"
+						value='<%=service.getDetailAddress1()%>' readonly="readonly">
 					<button type="button" class="addr_search">주소검색</button>
 				</div>
 
 				<div>
 					<input id="detailAddress2" type="text" name="detailAddress2"
+						value="<%=service.getDetailAddress2()%>"
 						placeholder="상세 주소를 입력하세요. ex) 102동 1135호">
 				</div>
 				<div class="region_map">
@@ -726,7 +765,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 		<dl class="section service">
 			<dt class="section_title">분야</dt>
 			<dd class="section_detail">
-				<button type="button" data-category='edu' data-tagId=62 class="on">교육</button>
+				<button type="button" data-category='edu' data-tagId=62 class="">교육</button>
 				<!--
             -->
 				<button type="button" data-category='house' data-tagId=60>가사</button>
@@ -755,8 +794,8 @@ dl.schedule dd .schedule_view>table td:hover button {
 			<dt class="section_title">품</dt>
 			<dd class="section_detail">
 				<input type="number" maxlength="5" min="1" max="65535"
-					placeholder="10" value="10" name='poom' required> <i
-					class="fas fa-question-circle"
+					placeholder="10" value="<%=service.getPoom()%>" name='poom'
+					required> <i class="fas fa-question-circle"
 					title="품이란 시간당 기본 가중치 입니다. 10품 X 2시간  = 20 코인"></i>
 			</dd>
 		</dl>
@@ -863,12 +902,12 @@ dl.schedule dd .schedule_view>table td:hover button {
 			<dt class="section_title">내용</dt>
 			<dd class="section_detail">
 				<textarea id='contents' name="contents" placeholder="내용을 입력하세요~"
-					required="required"></textarea>
+					required="required"><%=service.getContent()%></textarea>
 			</dd>
 		</dl>
 		<div class="section submit">
 			<div>
-				<input type="submit" value="입력" /> <input class="cancel"
+				<input type="submit" value="수정" /> <input class="cancel"
 					type="reset" value="취소" />
 			</div>
 		</div>
@@ -939,7 +978,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 	<script src="js/tui-date-picker.min.js"></script>
 	<script src="js/ckeditor/ckeditor.js?a=3"></script>
 	<script src="js/ckeditor/config.js?a=4"></script>
-	<script src="js/registerServiceForm.js?a=4"></script>
+	<script src="js/updateServiceForm.js?a=4"></script>
 	<script>
     $(function() {
 

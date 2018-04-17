@@ -6,6 +6,10 @@ var cards = [
     {"img1":"img/heroimage/heroImage.jpg","img2":"img/serviceimg/work2.jpg","img3":"img/serviceimg/work3.jpg", "profilePic":"img/profile/profile_img.png","nickname":"안륜동","title":"집청소의 끝판왕(집안일 뭐든해요)","tag":"#청소 #집안일 #이불빨래","score":"78%(50) / 서울 마포","price":"60품"},
     {"img1":"img/heroimage/heroImage.jpg","img2":"img/serviceimg/work2.jpg","img3":"img/serviceimg/work3.jpg", "profilePic":"img/profile/profile_img.png","nickname":"안륜동","title":"집청소의 끝판왕(집안일 뭐든해요)","tag":"#청소 #집안일 #이불빨래","score":"78%(50) / 서울 마포","price":"60품"}
 ];
+
+
+
+
 var tmp = _.template($("#step1CardTmp").html());
 
 var markup = tmp({"list":cards});

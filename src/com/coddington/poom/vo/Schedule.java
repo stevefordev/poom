@@ -7,7 +7,8 @@ public class Schedule {
   private int no, serviceNo;
   private String type;// 실제 디비에서는 필요 없음, js 객체를 위해 사용
 
-  private String serviceDay;
+  private String serviceDay, serviceDateStr;
+
   private Date serviceStartdate, serviceDate, regdate;
 
   public int getNo() {
@@ -19,7 +20,8 @@ public class Schedule {
   }
 
   public String getType() {
-    return type;
+    
+    return this.serviceDay == null? "single":"repeat";
   }
 
   public void setType(String type) {
@@ -57,6 +59,15 @@ public class Schedule {
   public void setServiceDate(Date serviceDate) {
     this.serviceDate = serviceDate;
   }
+  
+  public String getServiceDateStr() {
+    return serviceDateStr;
+  }
+
+  public void setServiceDateStr(String serviceDateStr) {
+    this.serviceDateStr = serviceDateStr;
+  }
+
 
   public Date getRegdate() {
     return regdate;
