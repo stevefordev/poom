@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	User loginUser = (User) session.getAttribute(User.LOGIN_USER);
-
+	
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -607,9 +607,9 @@ body {
         <div class="content">
             <ul>
                 <li class="title"><@=card.title@></li>
-                <li class="tag"><@=card.tag@></li>
+                <li class="tag"><@=card.tags@></li>
                 <li class="score"><span class="icon_small sun"></span> <@=card.score@></li>
-                <li class="price"><@=card.price@></li>
+                <li class="poom"><@=card.poom@></li>
             </ul>
         </div>
     </div>

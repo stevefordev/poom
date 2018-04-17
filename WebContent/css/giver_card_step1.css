@@ -111,28 +111,28 @@ img_view div를 만듬*/
     height: 80px;
     border-radius: 30px;
 }
-.content{
+.card .content{
     position: relative;
-    /*background-color: deeppink;*/
+    background-color: deeppink;
     height: 130px;
     padding: 15px;
 }
-.title{
+.card .title{
     width: 250px;
     font-size: 25px;
     font-weight: bold;
     color: rgb(24,40,71);
-    /*background-color: brown;*/
+    background-color: brown;
     margin-bottom: 10px;
 }
-.tag{
-    /*background-color: aqua;*/
+.card .tag{
+    background-color: aqua;
     font-size: 19px;
     font-weight: normal;
     color: rgb(231,49,47);
     width: 230px;
 }
-.score .icon_small{
+.card .score .icon_small{
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -140,25 +140,25 @@ img_view div를 만듬*/
     vertical-align: text-bottom;
     margin-bottom: 1px;
 }
-.score .icon_small.sun{
+.card .score .icon_small.sun{
     background-image: url("../img/sun.svg");
 }
-.score{
-    /*background-color: darkcyan;*/
+.card .score{
+    background-color: darkcyan;
     font-size: 19px;
     font-weight: normal;
     color: rgb(29,71,120);
     width: 230px;
 }
-.price{
+.card .poom{
     position: absolute;
     bottom: 12px;
     right: 12px;
-    /*background-color: cadetblue;*/
+    background-color: cadetblue;
     font-size: 30px;
     font-weight: bold;
     color: rgb(13,26,38);
 }
-.content li{
+.card .content li{
     margin-bottom: 13px;
 }

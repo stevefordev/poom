@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias alias="ServiceTag" type="com.coddington.poom.vo.ServiceTag"/>
 		<typeAlias alias="Tag" type="com.coddington.poom.vo.Tag"/>
 		<typeAlias alias="User" type="com.coddington.poom.vo.User"/>
+		<typeAlias alias="Card" type="com.coddington.poom.vo.Card"/>
 	</typeAliases>
 
 	<!-- 데이터베이스 연결 환경설정 -->
