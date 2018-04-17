@@ -1,3 +1,4 @@
+<%@page import="com.coddington.poom.dao.SchedulesDAO"%>
 <%@page import="com.coddington.poom.dao.TagsDAO"%>
 <%@page import="com.coddington.poom.dao.ServiceTagsDAO"%>
 <%@page import="com.coddington.poom.vo.ServiceTag"%>
@@ -15,93 +16,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	/* 
-      area1: 서울
-      area2: 관악구
-      latitude: 37.48130258426689
-      longitude: 126.95285338253898
-      scheduleList: [{"type":"single","serviceStartdate":"","serviceDate":"2018-04-17 04:00:00"}]
-      photo: edu/1.jpg
-      category: edu
-      role: g
-      title: ssssss
-      detailAddress1: 서울 관악구 봉천동 979-1
-      detailAddress2: 
-      tag: #교육,#수영,#여름
-      
-      poom: 10
-      startDate: 2018-04-17
-      contents: <p>asgdfgdfh</p>
-      */
+  /* 
+  area1: 서울
+  area2: 관악구
+  latitude: 37.48130258426689
+  longitude: 126.95285338253898
+  scheduleList: [{"type":"single","serviceStartdate":"","serviceDate":"2018-04-17 04:00:00"}]
+  photo: edu/1.jpg
+  category: edu
+  role: g
+  title: ssssss
+  detailAddress1: 서울 관악구 봉천동 979-1
+  detailAddress2: 
+  tag: #교육,#수영,#여름
+  
+  poom: 10
+  startDate: 2018-04-17
+  contents: <p>asgdfgdfh</p>
+  */
 
-      //post방식의 한글처리
-      request.setCharacterEncoding("UTF-8");
-      String role = request.getParameter("role");
-      String title = request.getParameter("title");
-      String area1 = request.getParameter("area1");
-      String area2 = request.getParameter("area2");
-      String detailAddress1 = request.getParameter("detailAddress1");
-      String detailAddress2 = request.getParameter("detailAddress2");
-      String latitude = request.getParameter("latitude"); // need cut 15
-      String longitude = request.getParameter("longitude"); // need cut 15
-      String scheduleList = request.getParameter("scheduleList");
-      String photo = request.getParameter("photo");
-      String category = request.getParameter("category");
+  //post방식의 한글처리
+  request.setCharacterEncoding("UTF-8");
+  String role = request.getParameter("role");
+  String title = request.getParameter("title");
+  String area1 = request.getParameter("area1");
+  String area2 = request.getParameter("area2");
+  String detailAddress1 = request.getParameter("detailAddress1");
+  String detailAddress2 = request.getParameter("detailAddress2");
+  String latitude = request.getParameter("latitude"); // need cut 15
+  String longitude = request.getParameter("longitude"); // need cut 15
+  String scheduleList = request.getParameter("scheduleList");
+  String photo = request.getParameter("photo");
+  String category = request.getParameter("category");
+  // 
+  String[] tags = request.getParameterValues("tags");
+  //String tag = request.getParameter("tag"); //remove(#) split (,)
+  String poom = request.getParameter("poom");
+  String contents = request.getParameter("contents");
 
-      // 
-      String[] tags = request.getParameterValues("tags");
-      //String tag = request.getParameter("tag"); //remove(#) split (,)
-      String poom = request.getParameter("poom");
-      String contents = request.getParameter("contents");
+  User loginUser = (User) session.getAttribute(User.LOGIN_USER);
 
-      User loginUser = (User) session.getAttribute(User.LOGIN_USER);
+  Service service = new Service();
+  service.setUserNo(loginUser.getNo());
+  service.setTitle(title);
+  service.setRole(role);
+  service.setArea1(area1);
+  service.setArea2(area2);
+  service.setDetailAddress1(detailAddress1);
+  service.setDetailAddress2(detailAddress2);
+  service.setLatitude(latitude.substring(0, 15));
+  service.setLongitude(longitude.substring(0, 15));
+  service.setPhotoUrl(photo);
+  service.setCategory(category);
+  service.setPoom(Integer.parseInt(poom));
+  service.setContent(contents);
 
-      Service service = new Service();
-      service.setUserNo(loginUser.getNo());
-      service.setTitle(title);
-      service.setRole(role);
-      service.setArea1(area1);
-      service.setArea2(area2);
-      service.setDetailAddress1(detailAddress1);
-      service.setDetailAddress2(detailAddress2);
-      service.setLatitude(latitude.substring(0, 15));
-      service.setLongitude(longitude.substring(0, 15));
-      service.setPhotoUrl(photo);
-      service.setCategory(category);
-      service.setPoom(Integer.parseInt(poom));
-      service.setContent(contents);
+  System.out.println(service.toString());
 
-      System.out.println(service.toString());
+  // 서비스 입력
+  int serviceNo = ServicesDAO.insert(service);
 
-      int serviceNo = ServicesDAO.insert(service);
-      System.out.println(service.getNo());
-      // scheduleList tag 는 입력된 서비스 no 를 기준으로 각각의 테이블에 삽입
- 
-      // 태그 입력 당시에 ajax 로  새로 입련된 태그에 대해서 먼저 삽입하고
-      // 폼 서브밋 당시에는 태그 no 만 가지고 와서 servicetag 에 정보 삽입 하는 방법을 
-      // 검토 하였으나 
-      for (String tag : tags) {
-        Tag t = new Tag();
-        t.setName(tag);
-        TagsDAO.insert(t);
-        
-        ServiceTag serviceTag = new ServiceTag();
-        serviceTag.setServiceNo(service.getNo());
-        serviceTag.setTagNo(t.getNo());
-        ServiceTagsDAO.insert(serviceTag);
-      }
-      
-      
-      ObjectMapper mapper = new ObjectMapper();
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      mapper.setDateFormat(sdf);
-      List<Schedule> schedules =
-          mapper.readValue(scheduleList, new TypeReference<List<Schedule>>() {});
-      for (Schedule schedule : schedules) {
-        System.out.println(schedule.toString());
-        if (schedule.getServiceDate() != null) {
-          System.out.println(sdf.format(schedule.getServiceDate()));  
-        }        
-      }
-      response.sendRedirect("index.jsp");
+  // 서비스 태그 입력
+  // 태그 입력 당시에 ajax 로  새로 입련된 태그에 대해서 먼저 삽입하고
+  // 폼 서브밋 당시에는 태그 no 만 가지고 와서 servicetag 에 정보 삽입
+  for (String eachTagId : tags) {
+
+    ServiceTag serviceTag = new ServiceTag();
+    serviceTag.setServiceNo(service.getNo());
+    serviceTag.setTagNo(Integer.parseInt(eachTagId));
+    ServiceTagsDAO.insert(serviceTag);
+  }
+
+  // 서비스 일정 입력
+  ObjectMapper mapper = new ObjectMapper();
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  mapper.setDateFormat(sdf);
+  List<Schedule> schedules =
+      mapper.readValue(scheduleList, new TypeReference<List<Schedule>>() {});
+  for (Schedule eachSchedule : schedules) {
+    Schedule schedule = new Schedule();
+	schedule.setServiceNo(serviceNo);
+    if (eachSchedule.getServiceDate() != null) {
+      // servicedate 가 null 이 아닐때는 단일 일정 등록
+      System.out.println(sdf.format(eachSchedule.getServiceDate()));
+      schedule.setServiceDate(eachSchedule.getServiceDate());
+
+    } else {
+      // servicedate 가 null 일때는 반복 일정 등록
+      schedule.setServiceStartdate(eachSchedule.getServiceStartdate());
+      schedule.setServiceDay(eachSchedule.getServiceDay());
+    }
+
+    SchedulesDAO.insert(schedule);
+  }
+  response.sendRedirect("index.jsp");
 %>

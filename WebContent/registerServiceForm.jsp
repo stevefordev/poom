@@ -138,6 +138,17 @@ dl.region dd .region_map {
 	border-radius: 6px;
 	box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.3);
 }
+#regionMainList {
+    width: 310px;
+    height: 128px;
+    background: #424242;
+}
+
+#regionSubList {
+    width: 310px;
+    height: 128px;
+    background: #b4b4b4;
+}
 /*end region*/
 
 /******************** start service 서비스 분야 ********************/
@@ -167,6 +178,9 @@ dl.service dd>button.on {
 
 /******************** section tag 태그********************/
 /*마크업 인풋 박스는 삭제하고 tagEditor 를 삽입*/
+dl.tag {
+	overflow: hidden;
+}
 dl.tag dd>input {
 	display: none;
 }
@@ -217,6 +231,12 @@ dl.tag dd>ul>li>div.tag-editor-tag {
 	border-radius: 10px;
 }
 
+#registerService dl.section.tag>dd.section_info {
+	margin-left:90px;
+	color : #626262;
+	font-size: 16px;
+	height:30px;
+}
 /******************** section photo 사진********************/
 dl.photo {
 	height: 350px;
@@ -706,19 +726,22 @@ dl.schedule dd .schedule_view>table td:hover button {
 		<dl class="section service">
 			<dt class="section_title">분야</dt>
 			<dd class="section_detail">
-				<button type="button" data-category='edu' class="on">교육</button>
+				<button type="button" data-category='edu' data-tagId=62 class="on">교육</button>
 				<!--
             -->
-				<button type="button" data-category='house'>가사</button>
+				<button type="button" data-category='house' data-tagId=60>가사</button>
 				<!--
             -->
-				<button type="button" data-category='delivery'>심부름</button>
+				<button type="button" data-category='delivery' data-tagId=61>심부름</button>
 			</dd>
 		</dl>
 		<dl class="section tag">
 			<dt class="section_title">태그</dt>
 			<dd class="section_detail">
 				<input type="text" name='tag' required>
+			</dd>
+			<dd class="section_info">
+				<span>※ 태그는 최대 5개까지 입력 가능합니다.</span>
 			</dd>
 		</dl>
 		<dl class="section photo">

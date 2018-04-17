@@ -6,21 +6,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 <mapper namespace="tags">
 
-	<select id="selectListByName" resultType="Tag" parameterType="String">
+	<select id="selectListLikeName" resultType="Tag" parameterType="String">
 		SELECT no, name, regdate
 		FROM tags
 		WHERE name LIKE '%'||#{name}||'%'
 	</select>
+	<select id="selectListByName" resultType="Tag" parameterType="String">
+		SELECT no, name, regdate
+		FROM tags
+		WHERE name = #{name}
+	</select>
 	<insert id="insert" parameterType="String">
-		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
-			SELECT tags_seq.nextval FROM dual
+		INSERT INTO tags(no, name, regdate)
+		VALUES (tags_seq.nextval, #{name},
+		systimestamp)
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT tags_seq.currval FROM dual
 		</selectKey>
-		insert into tags(no, name, regdate)
-		SELECT #{no}, #{name}
-		,systimestamp FROM DUAL
-		WHERE NOT EXISTS (SELECT name FROM tags WHERE
-		name = #{name})
-
 	</insert>
 </mapper>
  

@@ -12,9 +12,7 @@ public class TagsDAO {
     SqlSession session = null;
     try {
       session = SqlSessionUtil.getSession();
-
       result = session.insert("tags.insert", tag);
-
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
@@ -26,17 +24,21 @@ public class TagsDAO {
     return result;
   }// () end
 
-  public static List<Tag> selectListByName(String name) {
+
+  /**
+   * 태그 이름이 포함된 리스트 호출
+   * 
+   * @param name
+   * @return
+   */
+  public static List<Tag> selectListLikeName(String name) {
 
     List<Tag> list = null;
-
     SqlSession session = null;
 
     try {
       session = SqlSessionUtil.getSession();
-
-      list = session.selectList("tags.selectListByName", name);
-
+      list = session.selectList("tags.selectListLikeName", name);
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
@@ -46,5 +48,30 @@ public class TagsDAO {
     } // try~catch~finally end
 
     return list;
+  }
+
+  /**
+   * 태그 이름과 같은 태그 호출
+   * 
+   * @param name
+   * @return
+   */
+  public static Tag selectByName(String name) {
+
+    Tag result = null;
+    SqlSession session = null;
+
+    try {
+      session = SqlSessionUtil.getSession();
+      result = session.selectOne("tags.selectListByName", name);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (session != null) {
+        session.close();
+      } // if end
+    } // try~catch~finally end
+
+    return result;
   }
 }
