@@ -1,5 +1,8 @@
 package com.coddington.poom.vo;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * 카드 정보 호출을 위한 VO
  * @author Administrator
@@ -9,6 +12,14 @@ public class Card {
 
   private String userName, title, tags, area1, area2;
   private int countLike, scoreTotal, countScore, poom;
+  private List<String> photos;
+ 
+  public List<String> getPhotos() {
+    return photos;
+  }
+  public void setPhotos(List<String> photos) {
+    this.photos = photos;
+  }
   public int getPoom() {
     return poom;
   }

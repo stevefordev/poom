@@ -19,6 +19,16 @@ $.ajax({
     
     var markup = tmp({"list":data});
     $("#cardBox").html(markup);
+    
+    $('.img_box').each(function(){
+      var imgBox = $(this);
+      imgBox.slick({
+          adaptiveHeight:true,
+          prevArrow:imgBox.parent().find(".left_cursor"),
+          nextArrow:imgBox.parent().find(".right_cursor")
+      })
+
+  });
 
   },
   error: function(jqXHR, textStatus, errorThrown) {
@@ -38,13 +48,5 @@ $(".heart").click(function () {
 
 //이미지 슬라이드 자바스크립트
 $(document).ready(function(){
-    $('.img_box').each(function(){
-        var imgBox = $(this);
-        imgBox.slick({
-            adaptiveHeight:true,
-            prevArrow:imgBox.parent().find(".left_cursor"),
-            nextArrow:imgBox.parent().find(".right_cursor")
-        })
-
-    });
+    
 });

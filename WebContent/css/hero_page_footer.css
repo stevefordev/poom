@@ -26,17 +26,13 @@
 }
 #footerLogo{
     margin: auto;
-    width: 50px;
-    height: 50px;
-    font-size: 40px;
-    text-align: center;
-    font-weight: bolder;
-    line-height: 50px;
-    border: 5px solid #424242;
-    color: #1f2b43;
+    width: 80px;
+    height: 80px;    
     margin-bottom: 10px;
+    background-image: url('../img/poom_logo_2.png');
+    background-size: cover;
 }
-.sns{
+#footer .sns{
     width: 255px;
     height: 13px;
     font-size: 13px;
@@ -44,6 +40,6 @@
     margin: auto;
     color: #a9a9a9;
 }
-.sns a{
+#footer .sns a{
     text-decoration: none;
 }

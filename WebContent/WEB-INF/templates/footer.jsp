@@ -7,23 +7,21 @@
 		<div id="footerContentBox">
 			<ul id="introduce">
 				<li>소개</li>
-				<li>????</li>
+				<li>코딩턴팀</li>
 			</ul>
 			<ul id="policy">
 				<li>정책</li>
-				<li>?????</li>
-				<li>?????</li>
+				<li>이용약관</li>
+				<li>개인정보취급방침</li>
 			</ul>
 			<ul id="serviceCenter">
 				<li>고객센터</li>
-				<li>?????</li>
-				<li>?????</li>
+				<li>FAQ</li>
+				<li>QnA</li>
 			</ul>
 		</div>
 	</div>
-	<div id="footerLogo">
-		<span>품</span>
-	</div>
+	<div id="footerLogo"></div>
 	<div class="sns">
 		<a href="" class="facebook" target="_blank"> 페이스북 </a> <span>·</span>
 

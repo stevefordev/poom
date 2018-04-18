@@ -1,3 +1,8 @@
+<%@page import="java.util.Random"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="com.coddington.poom.vo.Photo"%>
+<%@page import="com.coddington.poom.dao.PhotosDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.coddington.poom.vo.Card"%>
 <%@page import="com.coddington.poom.dao.ServicesDAO"%>
@@ -27,16 +32,33 @@
 
 
     List<String> tagNames = new ArrayList();
-    for (Tag tag : tags) {
-      tagNames.add("#" + tag.getName());
+    for (int j = 0; j < 3 && j < tags.size(); j++) {
+      //1단 카드에서는 세개만
+      tagNames.add("#" + tags.get(j).getName());
+
     }
 
+    //PhotosDAO.selectList
+    List<String> photos = new ArrayList<String>();
+    photos.add("img/heroimage/heroImage.jpg");
+    photos.add("img/serviceimg/work2.jpg");
+    photos.add("img/serviceimg/work3.jpg");
+    
+    Random random = new Random();
+
+    int score =  random.nextInt(89) + 10;
+    int countScore =  random.nextInt(500) + 50;
+    int countLike =  random.nextInt(500) + 50;
     Card card = new Card();
     card.setTitle(services.get(i).getTitle());
     card.setArea1(services.get(i).getArea1());
     card.setArea2(services.get(i).getArea2());
     card.setPoom(services.get(i).getPoom());
+    card.setScoreTotal(score);
+    card.setCountScore(countScore);
+    card.setCountLike(countLike);
     card.setTags(String.join(" ", tagNames).replace("[", "").replace("]", ""));
+    card.setPhotos(photos);
     cards.add(card);
   }
 
