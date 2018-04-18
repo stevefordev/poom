@@ -60,7 +60,7 @@
   Service service = new Service();
   service.setNo(Integer.parseInt(serviceNoStr));
   service.setUserNo(loginUser.getNo());
-  
+
   service.setTitle(title);
   service.setRole(role);
   service.setArea1(area1);
@@ -91,28 +91,17 @@
     ServiceTagsDAO.insert(serviceTag);
   }
 
-  // 서비스 일정 입력
+  // 서비스 일정의 삭제는 수정 페이지에서 실시간 수행
+  // 삽입은 ifnotexist 사용
   ObjectMapper mapper = new ObjectMapper();
-  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-  mapper.setDateFormat(sdf);
   List<Schedule> schedules =
       mapper.readValue(scheduleList, new TypeReference<List<Schedule>>() {});
+
   for (Schedule eachSchedule : schedules) {
-    Schedule schedule = new Schedule();
-	schedule.setServiceNo(service.getNo());
-    if (eachSchedule.getServiceDate() != null) {
-      // servicedate 가 null 이 아닐때는 단일 일정 등록
-      System.out.println(sdf.format(eachSchedule.getServiceDate()));
-      schedule.setServiceDateStr(sdf.format(eachSchedule.getServiceDate()));
 
-    } else {
-      // servicedate 가 null 일때는 반복 일정 등록
-      schedule.setServiceStartdate(eachSchedule.getServiceStartdate());
-      schedule.setServiceDay(eachSchedule.getServiceDay());
-    }
-
-    //수정 필요
-//    SchedulesDAO.insert(schedule);
+    eachSchedule.setServiceNo(service.getNo());
+    SchedulesDAO.insertIfNotExists(eachSchedule);
   }
+
   response.sendRedirect("index.jsp");
 %>

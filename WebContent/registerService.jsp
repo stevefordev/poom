@@ -1,4 +1,4 @@
-<%@page import="java.util.Date"%>
+
 <%@page import="com.coddington.poom.dao.SchedulesDAO"%>
 <%@page import="com.coddington.poom.dao.TagsDAO"%>
 <%@page import="com.coddington.poom.dao.ServiceTagsDAO"%>
@@ -99,15 +99,7 @@
   List<Schedule> schedules =
       mapper.readValue(scheduleList, new TypeReference<List<Schedule>>() {});
   
-  for (Schedule eachSchedule : schedules) {
-    
-    
-    Date date = eachSchedule.getServiceDate();
-    if(date!=null) {
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      String dateString = sdf.format(date);
-      System.out.println(dateString);
-    }
+  for (Schedule eachSchedule : schedules) {    
   
     //System.out.println(eachSchedule.getServiceDate());
     //System.out.println(eachSchedule.getServiceDateHour());

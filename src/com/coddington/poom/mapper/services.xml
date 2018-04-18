@@ -18,16 +18,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</selectKey>
 	</insert>
 	<update id="update" parameterType="Service">
-		update services
-
-		SET title = #{title},area1 = #{area1}, area2 =#{area2}, detail_address1 =
+		UPDATE services
+		SET title = #{title}, area1 = #{area1}, area2 =#{area2}, detail_address1 =
 		#{detailAddress1},
 		detail_address2 = #{detailAddress2}, latitude=
 		#{latitude},longitude = #{longitude}, poom = #{poom}, content =
 		#{content},
 		category = #{category}, photo_url = #{photoUrl}, role =
 		#{role}
-		WHEREj no = {no} AND user_no = #{userNo}
+		WHERE no = #{no} AND user_no = #{userNo}
 	</update>
 
 	<select id="selectListAll" resultType="Service">

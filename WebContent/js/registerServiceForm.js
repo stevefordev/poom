@@ -721,35 +721,7 @@ $('.schedule_add').click(
             });
           });
 
-          // 서버로 넘기기 위해 배열을 다시 만든다
-          var schedules = [];
-          console.log(scheduleList);
-          // 반복 일정 정리
-          _.each(scheduleList.repeatDates, function(schedule, key) {
-            if (schedule.times.length > 0) {
-              _.each(schedule.times, function(time) {
-                schedules.push({
-                  "type": "repeat",
-                  "serviceStartdate": $('input[name=startDate]').val()
-                          + ' 00:00:00',
-                  "serviceDay": key + ('0' + time).slice(-2)
-                })
-              })
-            }
-          })
-          // 단일 일정 정리
-          _.each(scheduleList.singleDates, function(singleDate) {
-            _.each(singleDate.times, function(time) {
-              schedules.push({
-                "type": "single",
-                "serviceStartdate": '',
-                "serviceDate": (new Date(singleDate.date + ' ' + ('0' + time).slice(-2) + ':00:00').getTime())
-              })
-            })
-          })
-
-          // 서버로 넘기는 객체로 세팅
-          $scheduleList.val(JSON.stringify(schedules));
+          setScheduleListForServer();
           // 선택일 정 탬플릿 입력
           var selectedScheduleTemp = _.template($("#selectedScheduleTemp")
                   .html());
@@ -759,39 +731,81 @@ $('.schedule_add').click(
           $(".schedule_view tbody").html(markup);
         })// end schedule_add btn
 
+        // 서버로 넘기기 위해 배열을 다시 만든다
+function setScheduleListForServer() {
+
+  var schedules = [];
+  console.log(scheduleList);
+  // 반복 일정 정리
+  _.each(scheduleList.repeatDates, function(schedule, key) {
+    if (schedule.times.length > 0) {
+      _.each(schedule.times, function(time) {
+        schedules.push({
+          "type": "repeat",
+          "serviceStartdate": $('input[name=startDate]').val() + ' 00:00:00',
+          "serviceDay": key + ('0' + time).slice(-2)
+        })
+      })
+    }
+  })
+  // 단일 일정 정리
+  _.each(scheduleList.singleDates, function(singleDate) {
+    _.each(singleDate.times, function(time) {
+      schedules.push({
+        "type": "single",
+        "serviceStartdate": '',
+        "serviceDate": new Date(singleDate.date + ' ' + ('0' + time).slice(-2) + ':00:00').getTime()
+      })
+    })
+  })
+
+  console.log(JSON.stringify(schedules));
+  // 서버로 넘기는 객체로 세팅
+  $scheduleList.val("");
+  $scheduleList.val(JSON.stringify(schedules));
+}
 // 선택된 날짜 삭제
 $('dl.schedule dd .schedule_view> table').on('click', 'button', function() {
   // 단일 일정 관련
   var $td = $(this).parent('td');
+  
+  var time = $td.data('time');
   console.log($td.data('type'));
+  
   if ($td.data('type') == 'singleDates') {
+    var date = $td.data('date');
+    
     $.each(scheduleList.singleDates, function(index, each) {
-      if (each.date == $td.data('date')) {
+      if (each.date == date) {
         // 해당 시간을 삭제
         console.log(each.times);
         each.times = $.grep(each.times, function(v) {
-          return v != $td.data('time');
+          return v != time; 
         });
         console.log(each.times);
       }
       ;
     });
   } else {
+    var week = $td.data('week');
     // 반복 일정 관련
     $.each(scheduleList.repeatDates, function(key, each) {
-      if (key == $td.data('week')) {
+      if (key == week) {
         // 해당 시간을 삭제
         each.times = $.grep(each.times, function(v) {
-          return v != $td.data('time');
+          return v != time;
         });
         console.log(each.times);
       }
       ;
     });
-  }
+  }  
   $td.remove();
+  setScheduleListForServer();
   console.log(scheduleList);
 }); // end delete btn
+
+
 // end schedule
 // *******************************************************************************/
 /* textarea 에디터 입력 */

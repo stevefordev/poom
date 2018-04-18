@@ -1,6 +1,6 @@
 package com.coddington.poom.vo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import com.coddington.poom.util.FieldUtil;
 
@@ -10,7 +10,7 @@ public class Schedule {
 
   private String serviceDay, serviceDateStr;
 
-  private Date serviceStartdate, serviceDate, regdate;
+  private Timestamp serviceStartdate, serviceDate, regdate;
   
   private Calendar cal;
 
@@ -52,33 +52,33 @@ public class Schedule {
     this.serviceDay = serviceDay;
   }
 
-  public Date getServiceStartdate() {
+  public Timestamp getServiceStartdate() {
     return serviceStartdate;
   }
 
-  public void setServiceStartdate(Date serviceStartdate) {
+  public void setServiceStartdate(Timestamp serviceStartdate) {
     this.serviceStartdate = serviceStartdate;
   }
 
-  public Date getServiceDate() {
+  public Timestamp getServiceDate() {
     return serviceDate;
   }
 
   public int getServiceDateHour() {
-      return cal.get(Calendar.HOUR);
+      return cal.get(Calendar.HOUR_OF_DAY);
   }
   
-  public void setServiceDate(Date serviceDate) {
+  public void setServiceDate(Timestamp serviceDate) {
     this.serviceDate = serviceDate;
     cal.setTime(this.serviceDate);
   }
  
 
-  public Date getRegdate() {
+  public Timestamp getRegdate() {
     return regdate;
   }
 
-  public void setRegdate(Date regdate) {
+  public void setRegdate(Timestamp regdate) {
     this.regdate = regdate;
   }
 

@@ -7,10 +7,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="contractSchedules">
 
 
-	<select id="selectCountByContractNo" parameterType="int" resultType="int">
+	<select id="selectCountByContractNo" parameterType="int"
+		resultType="int">
 		SELECT count(*)
 		FROM contract_schedules
-		WHERE contract_no=#{contactNo}
+		WHERE
+		contract_no=#{contactNo}
+	</select>
+
+
+	<select id="selectCountByServiceNo" parameterType="int"
+		resultType="int">
+		SELECT count(*)
+		FROM contract_schedules cs, contracts c
+		WHERE cs.CONTRACT_NO = c.no
+		AND c.SERVICE_NO = #{serviceNo}
 	</select>
 
 

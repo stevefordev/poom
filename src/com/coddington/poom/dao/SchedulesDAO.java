@@ -42,4 +42,40 @@ public class SchedulesDAO {
     } // try~catch~finally end
     return result;
   }
+
+  // insertIfNotExists
+  public static int insertIfNotExists(Schedule schedule) {
+    int result = 0;
+    SqlSession session = null;
+
+    try {
+      session = SqlSessionUtil.getSession();
+      result = session.insert("schedules.insertIfNotExists", schedule);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (session != null) {
+        session.close();
+      } // if end
+    } // try~catch~finally end
+    return result;
+  }
+
+  public static int delete(int no) {
+
+    int result = 0;
+    SqlSession session = null;
+
+    try {
+      session = SqlSessionUtil.getSession();
+      result = session.delete("schedules.delete", no);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (session != null) {
+        session.close();
+      } // if end
+    } // try~catch~finally end
+    return result;
+  }
 }

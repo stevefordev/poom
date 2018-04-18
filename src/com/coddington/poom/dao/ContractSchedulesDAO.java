@@ -5,25 +5,47 @@ import com.coddington.poom.util.SqlSessionUtil;
 
 public class ContractSchedulesDAO {
 
-	public static int selectCountByContractNo(int contractNo) {
-		int count = 0;
+  public static int selectCountByContractNo(int contractNo) {
+    int count = 0;
 
-		SqlSession session = null;
+    SqlSession session = null;
 
-		try {
-			session = SqlSessionUtil.getSession();
+    try {
+      session = SqlSessionUtil.getSession();
 
-			count = session.selectOne("contractSchedules.selectCountByContractNo", contractNo);
+      count = session.selectOne("contractSchedules.selectCountByContractNo", contractNo);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (session != null) {
-				session.close();
-			} // if end
-		} // try~catch~finally end
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (session != null) {
+        session.close();
+      } // if end
+    } // try~catch~finally end
 
-		return count;
-	}// () end
+    return count;
+  }// () end
+
+  public static int selectCountByServiceNo(int serviceNo) {
+    int count = 0;
+
+    SqlSession session = null;
+
+    try {
+      session = SqlSessionUtil.getSession();
+
+      count = session.selectOne("contractSchedules.selectCountByServiceNo", serviceNo);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (session != null) {
+        session.close();
+      } // if end
+    } // try~catch~finally end
+
+    return count;
+
+  }
 
 }

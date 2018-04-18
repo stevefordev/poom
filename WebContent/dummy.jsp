@@ -31,8 +31,8 @@
 
 	//DummyUtil.contractForTaker(is, null);
 
-	int[] serviceNoList = { 2, 9, 10, 19, 24, 25, 27, 33, 35 };
-	int idx = 255;
+	int[] serviceNoList = { 6, 10, 17, 18 };
+	int idx = 266;
 	for (int i : serviceNoList) {
 		idx = DummyUtil.contractSchedule(i,idx);
 	}
