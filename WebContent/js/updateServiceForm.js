@@ -249,7 +249,7 @@ $tag.tagEditor({
     }, // automatic menu position up/down / flip
     source: function(request, response) {
       $.ajax({
-        url: "ajax/getTag.jsp",
+        url: "ajax/getTagList.jsp",
         dataType: "json",
         data: request,
         success: function(data) {
@@ -308,7 +308,7 @@ function removeAllTags() {
 // 디비에서 태그를 검색하고 없으면 삽입하고 tagid 를 리턴 받는다
 function getTagIdOrInsert(name) {
   $.ajax({
-    url: "ajax/getTag.jsp",
+    url: "ajax/getTagList.jsp",
     dataType: "json",
     data: {
       'isEqual': 1,
