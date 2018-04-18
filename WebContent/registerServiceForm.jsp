@@ -160,9 +160,10 @@ dl.service dd button {
 	margin-top: 10px;
 	display: inline-block;
 	background-color: #828282;
+	width:92px;
 	border: none;
 	color: white;
-	padding: 14px 30px;
+	padding: 14px 20px;
 	text-align: center;
 	text-decoration: none;
 	font-size: 16px;
@@ -231,11 +232,12 @@ dl.tag dd>ul>li>div.tag-editor-tag {
 	border-radius: 10px;
 }
 
-#registerService dl.section.tag>dd.section_info {
+dl.section.tag>dd.section_info {
 	margin-left:90px;
 	color : #626262;
 	font-size: 16px;
 	height:30px;
+	min-height:0px;
 }
 /******************** section photo 사진********************/
 dl.photo {

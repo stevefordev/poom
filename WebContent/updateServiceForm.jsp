@@ -171,8 +171,9 @@ dl.service dd button {
 	display: inline-block;
 	background-color: #828282;
 	border: none;
+	width:92px;
 	color: white;
-	padding: 14px 30px;
+	padding: 14px 20px;
 	text-align: center;
 	text-decoration: none;
 	font-size: 16px;
