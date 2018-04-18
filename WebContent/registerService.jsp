@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="com.coddington.poom.dao.SchedulesDAO"%>
 <%@page import="com.coddington.poom.dao.TagsDAO"%>
 <%@page import="com.coddington.poom.dao.ServiceTagsDAO"%>
@@ -87,27 +88,31 @@
     ServiceTagsDAO.insert(serviceTag);
   }
 
+
+  System.out.println("scheduleList:" + scheduleList);
+
   // 서비스 일정 입력
   ObjectMapper mapper = new ObjectMapper();
-  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-  mapper.setDateFormat(sdf);
+  //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  //mapper.setDateFormat(sdf);
+
   List<Schedule> schedules =
       mapper.readValue(scheduleList, new TypeReference<List<Schedule>>() {});
+  
   for (Schedule eachSchedule : schedules) {
-    Schedule schedule = new Schedule();
-	schedule.setServiceNo(service.getNo());
-    if (eachSchedule.getServiceDate() != null) {
-      // servicedate 가 null 이 아닐때는 단일 일정 등록
-      System.out.println(sdf.format(eachSchedule.getServiceDate()));
-      schedule.setServiceDateStr(sdf.format(eachSchedule.getServiceDate()));
-
-    } else {
-      // servicedate 가 null 일때는 반복 일정 등록
-      schedule.setServiceStartdate(eachSchedule.getServiceStartdate());
-      schedule.setServiceDay(eachSchedule.getServiceDay());
+    
+    
+    Date date = eachSchedule.getServiceDate();
+    if(date!=null) {
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      String dateString = sdf.format(date);
+      System.out.println(dateString);
     }
-
-    SchedulesDAO.insert(schedule);
+  
+    //System.out.println(eachSchedule.getServiceDate());
+    //System.out.println(eachSchedule.getServiceDateHour());
+    eachSchedule.setServiceNo(service.getNo());    
+    SchedulesDAO.insert(eachSchedule);
   }
   response.sendRedirect("index.jsp");
 %>

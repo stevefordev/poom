@@ -8,15 +8,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="selectListByServiceNo" parameterType="int"
 		resultType="Schedule">
-		SELECT no, service_no serviceNo, service_startdate serviceStartdate, service_day serviceDay, service_date serviceDate, to_char(service_date, 'yyyy-mm-dd hh24:mi:ss')
-		serviceDateStr, regdate
+		SELECT no, service_no serviceNo, service_startdate serviceStartdate, service_day serviceDay, service_date serviceDate, to_char(service_date, 'yyyy-mm-dd HH24:mi:ss')
+		serviceDate, regdate
 		FROM schedules
 		WHERE service_no=#{serviceNo}
 	</select>
 
 	<insert id='insert' parameterType="Schedule">
 		INSERT INTO schedules (no, service_no, service_startdate, service_day, service_date, regdate)
-		VALUES (schedules_seq.nextval, #{serviceNo}, #{serviceStartdate}, #{serviceDay}, to_date(#{serviceDateStr}, 'yyyy-mm-dd hh24:mi:ss'), systimestamp)
+		VALUES (schedules_seq.nextval, #{serviceNo}, #{serviceStartdate}, #{serviceDay}, #{serviceDate}, systimestamp)
 	</insert>
 
 </mapper>

@@ -11,9 +11,10 @@
 }
 /*팝업 뒷배경*/
 #loginJoinWrap{
+	
     font-family: "Noto Sans KR", sans-serif;
     color: #424242;
-    margin:0 auto;
+    margin:30px auto;
     width: 440px;
     overflow: auto;
 }
@@ -33,7 +34,7 @@
 }
 /*회원가입 박스*/
 #loginJoinWrap .tab{
-    display: inline-block;
+    float:left;
     width: 218px;
     height: 50px;
     border: 1px solid #424242;
@@ -120,6 +121,10 @@
     text-align: center;
     font-size: 18px;
 }
+#loginJoinWrap .icon_box>i{
+	line-height: 34px;
+}
+
 /*인풋박스 옆 아이콘박스 css*/
 #joinText{
     text-align: center;

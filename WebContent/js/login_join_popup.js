@@ -161,7 +161,7 @@ $("#heroJoinBtn").click(function (e) {
     $("#loginTab").removeClass("on");
     $("#joinTab").addClass("on");
 
-    //$("body").css("overflow" ,"hidden");
+    $("body").css("overflow" ,"hidden");
     
     //팝업창 띄우기
     $("#popupBackground").show();
@@ -173,14 +173,14 @@ $("#heroLoginBtn").click(function (e) {
     $("#loginInput").addClass("on");
     $("#loginTab").addClass("on");
     $("#joinTab").removeClass("on");
-    //$("body").css("overflow" ,"hidden");
+    $("body").css("overflow" ,"hidden");
     $("#popupBackground").show();
 });
 
 //popup을 클릭하면 popup이 사라짐
 $("#popupBackground").click(function () {
     $("#popupBackground").hide();
-    //$("body").attr("overflow" ,"visible");
+    $("body").css("overflow" ,"visible");
 });
 //팝업창을 제외한 뒷배경을 클릭했을때 팝업창이 사라지게 하기위해서 이벤트전파를 막음
 $("#loginJoinWrap").click(function (e) {

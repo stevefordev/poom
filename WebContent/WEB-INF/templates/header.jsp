@@ -10,7 +10,7 @@
 		</a>
 	</div>
 	<div class="search">
-		<form action="search.jsp" method="get" id="searchForm">
+		<form action="search_page.jsp" method="get" id="searchForm">
 			<input type="text" name="query" class="search" placeholder="검색" /><i
 				class="fas fa-search fa-2x"></i><input class="submit" type="submit" />
 		</form>

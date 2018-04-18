@@ -1,6 +1,7 @@
 package com.coddington.poom.vo;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.Calendar;
 import com.coddington.poom.util.FieldUtil;
 
 public class Schedule {
@@ -10,6 +11,13 @@ public class Schedule {
   private String serviceDay, serviceDateStr;
 
   private Date serviceStartdate, serviceDate, regdate;
+  
+  private Calendar cal;
+
+  public Schedule() {
+    cal = Calendar.getInstance();
+
+  }
 
   public int getNo() {
     return no;
@@ -20,8 +28,8 @@ public class Schedule {
   }
 
   public String getType() {
-    
-    return this.serviceDay == null? "single":"repeat";
+
+    return this.serviceDay == null ? "single" : "repeat";
   }
 
   public void setType(String type) {
@@ -56,18 +64,15 @@ public class Schedule {
     return serviceDate;
   }
 
-  public void setServiceDate(Date serviceDate) {
-    this.serviceDate = serviceDate;
+  public int getServiceDateHour() {
+      return cal.get(Calendar.HOUR);
   }
   
-  public String getServiceDateStr() {
-    return serviceDateStr;
+  public void setServiceDate(Date serviceDate) {
+    this.serviceDate = serviceDate;
+    cal.setTime(this.serviceDate);
   }
-
-  public void setServiceDateStr(String serviceDateStr) {
-    this.serviceDateStr = serviceDateStr;
-  }
-
+ 
 
   public Date getRegdate() {
     return regdate;

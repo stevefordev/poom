@@ -6,7 +6,7 @@
 <%@page import="com.coddington.poom.dao.TagsDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.coddington.poom.vo.Tag"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="application/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
   request.setCharacterEncoding("UTF-8");
@@ -17,6 +17,10 @@
 
   List<Card> cards = new ArrayList<Card>();
   List<Service> services = ServicesDAO.selectListAll();
+
+  for (Service s : services) {
+
+  }
 
   for (int i = 0; i < 6; i++) {
     List<Tag> tags = TagsDAO.selectListByServiceNo(services.get(i).getNo());

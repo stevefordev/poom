@@ -2,9 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	User loginUser = (User) session.getAttribute(User.LOGIN_USER);
-	
-	
+  User loginUser = (User) session.getAttribute(User.LOGIN_USER);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
@@ -128,7 +126,7 @@ body {
 }
 /*회원가입 로그인을 묶은 div css*/
 #linkBox {
-	width: 400px;
+	width: 360px;
 	height: 60px;
 	position: absolute;
 	right: 20px;
@@ -342,8 +340,8 @@ body {
 						<a id="logo" href=""><img src="/img/poom_logo.png"></a> <a
 							id="searchBtn" href="">서비스 검색</a>
 						<!--목록페이지로 넘어가는 링크-->
-						<form method="get" action="main.jsp">
-							<input type="text" name="search">
+						<form method="get" action="search_page.jsp">
+							<input type="text" name="query">
 							<button>
 								<i class="fas fa-search"></i>
 							</button>
@@ -351,7 +349,7 @@ body {
 						</form>
 					</div>
 					<%
-						if (loginUser == null) {
+					  if (loginUser == null) {
 					%>
 					<div id="linkBox" class="on">
 
@@ -500,7 +498,7 @@ body {
 						</div>
 					</div>
 					<%
-						} else {
+					  } else {
 					%>
 					<!--로그인했을때 히어로페이지 상단 링크에 회원가입 로그인 대신 내프로필과 프로필사진 닉네임이 나오도록 on클래스-->
 					<div id="loginBox" class="on">
@@ -516,8 +514,8 @@ body {
 							</div>
 							</article>
 						</div>
-						<a href="registerServiceForm.jsp">품 요청/등록</a> <a href="">내프로필</a> <a
-							href="" class="mypage"> <img
+						<a href="registerServiceForm.jsp">품 요청/등록</a> <a href="">내프로필</a>
+						<a href="" class="mypage"> <img
 							src="<%=loginUser.getPhotoUrl()%>" class="profile"
 							onerror="this.src='img/profile/profile_img.png'" /> <span><%=loginUser.getNickName()%>
 								<i class="fas fa-angle-down"></i></span>
@@ -533,7 +531,7 @@ body {
 					</div>
 
 					<%
-						}
+					  }
 					%>
 				</div>
 				<p id="text">

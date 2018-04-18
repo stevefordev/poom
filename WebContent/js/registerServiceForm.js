@@ -743,8 +743,7 @@ $('.schedule_add').click(
               schedules.push({
                 "type": "single",
                 "serviceStartdate": '',
-                "serviceDate": singleDate.date + ' ' + ('0' + time).slice(-2)
-                        + ':00:00'
+                "serviceDate": (new Date(singleDate.date + ' ' + ('0' + time).slice(-2) + ':00:00').getTime())
               })
             })
           })
