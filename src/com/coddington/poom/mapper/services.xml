@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		detailAddress2, latitude, longitude,
 		poom, content, category, photo_url
 		photoUrl, role, regdate
-		FROM services
+		FROM services ORDER BY regdate DESC
 	</select>
 
 	<select id="selectByServiceNoAndUserNo" parameterType="Service"

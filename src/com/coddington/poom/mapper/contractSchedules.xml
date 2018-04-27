@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="selectCountByServiceNo" parameterType="int"
 		resultType="int">
-		SELECT count(*)
+		SELECT count(cs.no)
 		FROM contract_schedules cs, contracts c
 		WHERE cs.CONTRACT_NO = c.no
 		AND c.SERVICE_NO = #{serviceNo}

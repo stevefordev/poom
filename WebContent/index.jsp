@@ -2,23 +2,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-  User loginUser = (User) session.getAttribute(User.LOGIN_USER);
+	User loginUser = (User) session.getAttribute(User.LOGIN_USER);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>품</title>
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/alert.css" />
-<link rel="stylesheet" href="css/fontawesome-all.css" />
-<link rel="stylesheet" href="css/notosanskr.css" />
-<link rel="stylesheet" href="css/login_join_popup.css?a=201804161">
+<link rel="stylesheet" href="css/common/reset.css" />
+<link rel="stylesheet" href="css/common/fontawesome-all.css" />
+<link rel="stylesheet" href="css/common/notosanskr.css" />
 <!--slick 이미지슬라이드 css-->
-<link rel="stylesheet" type="text/css" href="css/slick/slick.css" />
+<link rel="stylesheet" href="css/slick/slick.css" />
 <!--Add the new slick-theme.css if you want the default styling-->
-<link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css" />
+<link rel="stylesheet" href="css/slick/slick-theme.css?date=201804191" />
 <link rel="stylesheet" href="css/hero_page_footer.css">
+<link rel="stylesheet" href="css/alert.css" />
+<link rel="stylesheet" href="css/popup_login_join.css?a=201804161" />
 <style>
 body {
 	font-family: "Noto Sans KR", sans-serif;
@@ -28,7 +28,7 @@ body {
 #heroImage {
 	width: 100%;
 	height: 600px;
-	background-image: url("../img/heroimage/heroImage.jpg");
+	background-image: url("../img/hero/heroImage.jpg");
 	background-position: center;
 	display: inline-block;
 	position: relative;
@@ -288,6 +288,15 @@ body {
 	border-top: 1px solid #5d5d5d;
 }
 
+#loginBox .mypage_drop li:hover {
+	background-color: #ccc;
+	border-radius: 10px;
+}
+
+#loginBox .mypage_drop li:hover a {
+	color: #424242;
+}
+
 #loginBox .mypage_drop.show {
 	display: block;
 }
@@ -474,7 +483,7 @@ img_view div를 만듬*/
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 	display: -webkit-box;
-	line-height:30px;
+	line-height: 30px;
 }
 
 .card .tag {
@@ -518,6 +527,10 @@ img_view div를 만듬*/
 .card .content li {
 	
 }
+
+.card .img_box.slick-dotted.slick-slider {
+	margin-bottom: 0px;
+}
 </style>
 </head>
 <body>
@@ -528,8 +541,9 @@ img_view div를 만듬*/
 			<div id="heroImageBox">
 				<div id="header">
 					<div id="logoBox">
-						<a id="logo" href=""><img src="/img/poom_logo.png"></a> <a
-							id="searchBtn" href="">서비스 검색</a>
+						<a id="logo" href="search_page.jsp"><img
+							src="/img/poom_logo.png"></a> <a id="searchBtn" href="">서비스
+							검색</a>
 						<!--목록페이지로 넘어가는 링크-->
 						<form method="get" action="search_page.jsp">
 							<input type="text" name="query">
@@ -540,7 +554,7 @@ img_view div를 만듬*/
 						</form>
 					</div>
 					<%
-					  if (loginUser == null) {
+						if (loginUser == null) {
 					%>
 					<div id="linkBox" class="on">
 
@@ -689,7 +703,7 @@ img_view div를 만듬*/
 						</div>
 					</div>
 					<%
-					  } else {
+						} else {
 					%>
 					<!--로그인했을때 히어로페이지 상단 링크에 회원가입 로그인 대신 내프로필과 프로필사진 닉네임이 나오도록 on클래스-->
 					<div id="loginBox" class="on">
@@ -705,24 +719,24 @@ img_view div를 만듬*/
 							</div>
 							</article>
 						</div>
-						<a href="registerServiceForm.jsp">품 요청/등록</a> <a href="">내프로필</a>
-						<a href="" class="mypage"> <img
+						<a href="register_service_form.jsp">품 요청/등록</a> <a
+							href="profile.jsp">내프로필</a> <a href="" class="mypage"> <img
 							src="<%=loginUser.getPhotoUrl()%>" class="profile"
 							onerror="this.src='img/profile/profile_img.png'" /> <span><%=loginUser.getNickName()%>
 								<i class="fas fa-angle-down"></i></span>
 						</a>
 
 						<ul class="mypage_drop">
-							<li><a href="#">계약</a></li>
-							<li><a href="#">코인</a></li>
-							<li><a href="#">찜목록</a></li>
-							<li><a href="#">차단 목록</a></li>
+							<li><a href="dashboard_contract.jsp">계약</a></li>
+							<li><a href="dashboard_coin.jsp">코인</a></li>
+							<li><a href="dashboard_like_service.jsp">찜목록</a></li>
+							<li><a href="dashboard_block.jsp">차단 목록</a></li>
 							<li><a href="logout.jsp">로그아웃</a></li>
 						</ul>
 					</div>
 
 					<%
-					  }
+						}
 					%>
 				</div>
 				<p id="text">
@@ -802,27 +816,34 @@ img_view div를 만듬*/
     </div>
     <@ }) @>
 </script>
-	<script src="js/jquery.js"></script>
-	<script src="js/underscore-min.js"></script>
+	<script src="js/common/jquery.js"></script>
+	<script src="js/common/underscore-min.js"></script>
 	<script>
-    _.templateSettings = {
-      interpolate: /\<\@\=(.+?)\@\>/gim,
-      evaluate: /\<\@(.+?)\@\>/gim,
-      escape: /\<\@\-(.+?)\@\>/gim
-    };
-  </script>
-	<script type="text/javascript" src="js/slick/slick.min.js"></script>
+		_.templateSettings = {
+			interpolate : /\<\@\=(.+?)\@\>/gim,
+			evaluate : /\<\@(.+?)\@\>/gim,
+			escape : /\<\@\-(.+?)\@\>/gim
+		};
+	</script>
 	<script
 		src='https://www.google.com/recaptcha/api.js?onload=onloadCallback'></script>
-	<script src="js/login_join_popup.js?a=201804162"></script>
-	<script src="js/giver_card_step1.js"></script>
+	<script src="js/popup_login_join.js?date=201804162"></script>
+	<script src="js/slick/slick.min.js"></script>
+	<script src="js/slick/slick_common.js"></script>
+	<script src="js/giver_card_step1.js?date=201804192"></script>
 	<script>
-    var $mypage_drop = $(".mypage_drop");
-    var $mypage = $(".mypage");
-    $mypage.on('click', function(e) {
-      e.preventDefault();
-      $mypage_drop.toggleClass("show");
-    })
-  </script>
+		var $mypage_drop = $(".mypage_drop");
+		var $mypage = $(".mypage");
+		$mypage.on('click', function(e) {
+			e.preventDefault();
+			$mypage_drop.toggleClass("show");
+		})
+
+		var tmp = _.template($("#step1CardTmp").html());
+
+		//$(".box_card").html(markup);
+
+		cardUtil.selectCardList(tmp, $("#cardBox"), ".img_box");
+	</script>
 </body>
 </html>

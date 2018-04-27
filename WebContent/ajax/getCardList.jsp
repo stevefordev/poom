@@ -40,9 +40,9 @@
 
     //PhotosDAO.selectList
     List<String> photos = new ArrayList<String>();
-    photos.add("img/heroimage/heroImage.jpg");
-    photos.add("img/serviceimg/work2.jpg");
-    photos.add("img/serviceimg/work3.jpg");
+    photos.add("img/hero/heroImage.jpg");
+    photos.add("img/edu/lesson1.png");
+    photos.add("img/edu/lesson2.png");
     
     Random random = new Random();
 

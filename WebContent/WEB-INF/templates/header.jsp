@@ -33,7 +33,7 @@
 			</article>
 		</div>
 
-		<a href="registerServiceForm.jsp">품 요청/등록</a> <a href="">내프로필</a> <a
+		<a href="register_service_form.jsp">품 요청/등록</a> <a href="profile.jsp">내프로필</a> <a
 			href="" class="mypage"> <img src="<%=loginUser.getPhotoUrl()%>"
 			class="profile" onerror="this.src='img/profile/profile_img.png'" />
 			<span><%=loginUser.getNickName()%> <i
@@ -41,10 +41,10 @@
 		</a>
 
 		<ul class="mypage_drop">
-			<li><a href="#">계약</a></li>
-			<li><a href="#">코인</a></li>
-			<li><a href="#">찜목록</a></li>
-			<li><a href="#">차단 목록</a></li>
+			<li><a href="dashboard_contract.jsp">계약</a></li>
+			<li><a href="dashboard_coin.jsp">코인</a></li>
+			<li><a href="dashboard_like_service.jsp">찜목록</a></li>
+			<li><a href="dashboard_block.jsp">차단 목록</a></li>
 			<li><a href="logout.jsp">로그아웃</a></li>
 		</ul>
 
