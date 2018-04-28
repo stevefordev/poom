@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+
+<mapper namespace="serviceTags">
+	<insert id="insert" parameterType="ServiceTag">
+		INSERT INTO service_tags(no,
+		service_no, tag_no, regdate)
+		VALUES (service_tags_seq.nextval,
+		#{serviceNo}, #{tagNo}, systimestamp)
+
+	</insert>
+
+	<delete id="deleteByServiceNo" parameterType="int">
+		DELETE service_tags
+		WHERE service_no = #{serviceNo}
+	</delete>
+</mapper>

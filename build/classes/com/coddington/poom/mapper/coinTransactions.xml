@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+
+<mapper namespace="coinTransactions">
+
+<select id="selectListOutcome" resultType="CoinTransaction">
+	select ct.coin coin, ct.regdate regdate, u.NICK_NAME nickname, c.service_no serviceNo  
+	from COIN_TRANSACTIONS ct, contracts c, users u
+	WHERE ct.CONTRACT_NO = c.NO
+	AND c.TAKER_NO = u.NO
+	AND ct.user_no = 1
+	AND ct.type = 22
+	ORDER BY regdate DESC
+</select>
+
+
+
+<select id="selectList" resultType="CoinTransaction">
+	select ct.coin coin, ct.regdate regdate, u.NICK_NAME nickname, c.service_no serviceNo  
+	from COIN_TRANSACTIONS ct, contracts c, users u
+	WHERE ct.CONTRACT_NO = c.NO
+	AND c.TAKER_NO = u.NO
+	AND ct.user_no = 1
+	AND ct.type = 21
+	ORDER BY regdate DESC
+</select>
+
+</mapper>

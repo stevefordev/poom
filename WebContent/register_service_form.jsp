@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="css/calendar/tui-date-picker.css">
 <link rel="stylesheet" href="css/register_service.css" />
 
-
 <style>
 #content {
 	font-size: 19px;
@@ -931,7 +930,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 </script>
 
 	<%@ include file="WEB-INF/templates/js.jsp"%>
-	<script src="js/common/moment-with-locales.min.js"></script>
+	<script src="js/calendar/moment-with-locales.min.js"></script>
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=555baa134395660cb83af73dbe87d218&libraries=services,clusterer,drawing"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -943,7 +942,7 @@ dl.schedule dd .schedule_view>table td:hover button {
 	<script src="js/calendar/tui-date-picker.min.js"></script>
 	<script src="js/ckeditor/ckeditor.js?a=3"></script>
 	<script src="js/ckeditor/config.js?a=4"></script>
-	<script src="js/registerServiceForm.js?a=4"></script>
+	<script src="js/register_service_form.js?a=4"></script>
 	<script>
     $(function() {
 

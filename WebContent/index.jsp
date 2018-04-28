@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>품</title>
+<link rel="icon" href="img/favicon.ico">
 <link rel="stylesheet" href="css/common/reset.css" />
 <link rel="stylesheet" href="css/common/fontawesome-all.css" />
 <link rel="stylesheet" href="css/common/notosanskr.css" />
@@ -16,9 +17,11 @@
 <link rel="stylesheet" href="css/slick/slick.css" />
 <!--Add the new slick-theme.css if you want the default styling-->
 <link rel="stylesheet" href="css/slick/slick-theme.css?date=201804191" />
-<link rel="stylesheet" href="css/hero_page_footer.css">
+<link rel="stylesheet" href="css/footer.css">
 <link rel="stylesheet" href="css/alert.css" />
-<link rel="stylesheet" href="css/popup_login_join.css?a=201804161" />
+<link rel="stylesheet" href="css/popup_login_join.css?date=201804161" />
+<link rel="stylesheet" href="css/card_giver_level_first.css?date=201804272" />
+<link rel="stylesheet" href="css/card_taker_level_first.css?date=201804271" />
 <style>
 body {
 	font-family: "Noto Sans KR", sans-serif;
@@ -334,203 +337,7 @@ body {
 }
 
 /*********************/
-.card {
-	width: 350px;
-	height: 350px;
-	/*border: 1px solid #424242;*/
-	border-radius: 4px;
-	margin: auto;
-	overflow: hidden;
-	position: relative;
-	background-color: #fff;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1);
-	transition: 0.3s ease;
-}
 
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .2);
-	cursor: pointer;
-}
-/*이미지 슬라이드 버튼을 img_box에 포지셔닝 컨택스트로 줄시  사진과 버튼이 함께 이동해서 버튼 div와 img_box를 묶는
-img_view div를 만듬*/
-.img_view {
-	position: relative;
-}
-
-.fa-heart {
-	font-size: 20px;
-	cursor: pointer;
-	color: #eb1a33;
-}
-
-.heart {
-	position: absolute;
-	border-radius: 3px;
-	top: 15px;
-	right: 15px;
-	min-width: 65px;
-	padding: 0px 2px;
-	height: 31px;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 99;
-	color: #fff;
-	font-size: 20px;
-	text-align: center;
-	line-height: 31px;
-	transition: 0.3s ease;
-}
-
-.heart:hover {
-	background-color: rgba(290, 290, 290, 0.6);
-	color: #000000;
-}
-
-.img_view .heart .heart_count {
-	line-height: 30px;
-}
-
-.left_cursor {
-	position: absolute;
-	left: 10px;
-	top: 80px;
-	z-index: 9;
-}
-
-.right_cursor {
-	position: absolute;
-	right: 10px;
-	top: 80px;
-	z-index: 9;
-}
-
-.cursor button {
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	background-color: transparent;
-	color: transparent;
-	text-align: center;
-	line-height: 30px;
-	font-size: 20px;
-	border: none;
-	outline: 0;
-	transition: 0.3s ease;
-	cursor: pointer;
-}
-
-.img_view:hover .cursor button {
-	color: white;
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.img_box {
-	transition: 0.3s ease;
-	position: relative;
-	width: 350px;
-	height: 200px;
-	left: 0px;
-}
-
-.img_box img {
-	float: left;
-	width: 350px;
-	height: 200px;
-}
-
-.img_box:hover .cursor {
-	color: white;
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.profile_pic_box {
-	width: 80px;
-	height: 100px;
-	text-align: center;
-	position: absolute;
-	right: 5px;
-	top: 150px;
-	font-size: 15px;
-	color: rgb(24, 40, 71);
-}
-
-.profile_pic_box img {
-	margin: auto;
-	width: 80px;
-	height: 80px;
-	border-radius: 30px;
-}
-
-.card .content {
-	height: 130px;
-	padding: 15px;
-}
-
-.card .content ul {
-	position: relative;
-}
-
-.card .title {
-	height: 60px;
-	width: 250px;
-	font-size: 25px;
-	font-weight: bold;
-	color: rgb(24, 40, 71);
-	margin-bottom: 10px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	word-break: break-all;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	display: -webkit-box;
-	line-height: 30px;
-}
-
-.card .tag {
-	font-size: 19px;
-	font-weight: normal;
-	color: rgb(231, 49, 47);
-	width: 250px;
-	height: 28px;
-}
-
-.card .score .icon_small {
-	display: inline-block;
-	width: 25px;
-	height: 25px;
-	background-size: contain;
-	vertical-align: text-bottom;
-	margin-bottom: 1px;
-}
-
-.card .score .icon_small.sun {
-	background-image: url("../img/sun.svg");
-}
-
-.card .score {
-	height: 28px;
-	font-size: 19px;
-	font-weight: normal;
-	color: rgb(29, 71, 120);
-	width: 250px;
-}
-
-.card .poom {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	font-size: 30px;
-	font-weight: bold;
-	color: rgb(13, 26, 38);
-}
-
-.card .content li {
-	
-}
-
-.card .img_box.slick-dotted.slick-slider {
-	margin-bottom: 0px;
-}
 </style>
 </head>
 <body>
@@ -745,92 +552,23 @@ img_view div를 만듬*/
 					수 있도록 도와주는<br /> <span class="emphasis">공유경제 플렛폼 서비스</span>입니다
 				</p>
 			</div>
-		</div>
+		</div><!--//end heroImage  -->
 		<div id="recomendService">
 			<div id="recomendText">
 				<span>추천</span>
 			</div>
 			<div id="cardBox"></div>
-		</div>
-		<div id="footer">
-			<div id="footerContent">
-				<div id="footerContentBox">
-					<ul id="introduce">
-						<li>소개</li>
-						<li>코딩턴팀</li>
-					</ul>
-					<ul id="policy">
-						<li>정책</li>
-						<li>이용약관</li>
-						<li>개인정보취급방침</li>
-					</ul>
-					<ul id="serviceCenter">
-						<li>고객센터</li>
-						<li>FAQ</li>
-						<li>QnA</li>
-					</ul>
-				</div>
-			</div>
-			<div id="footerLogo"></div>
-			<div class="sns">
-				<a href="" class="facebook" target="_blank"> 페이스북 </a> <span>·</span>
-
-				<a href="" class="instagram" target="_blank"> 인스타그램 </a> <span>·</span>
-
-				<a href="" class="naver" target="_blank"> 블로그 </a> <span>·</span> <a
-					href="" class="kakaostory" target="_blank"> 카카오스토리 </a>
-			</div>
-		</div>
+		</div><!--//end recomendText  -->
+		 
 	</div>
 
-	<script type="text/template" id="step1CardTmp">
-    <@ _.each(list,function(card){ @>
-    <div class="card">
-        <div class="img_view">
-            <div class="heart">
-                <i class="far fa-heart"></i>
-                <span class="heart_count"><@=card.countLike@></span>
-            </div>
-            <div class="cursor">
-                <button class="left_cursor"><i class="fas fa-angle-left"></i></button>
-                <button class="right_cursor"><i class="fas fa-angle-right"></i></button>
-            </div>
-            <div class="img_box">
-				<@ _.each(card.photos,function(photo) { @>
-                <img src="<@=photo@>">
-                <@ })@>
-            </div>
-        </div>
-        <div class="profile_pic_box">
-            <img src="<@=card.profilePic@>">
-            <span><@=card.nickname@></span>
-        </div>
-        <div class="content">
-            <ul>
-                <li class="title"><@=card.title@></li>
-                <li class="tag"><@=card.tags@></li>
-                <li class="score"><span class="icon_small sun"></span>&nbsp;<@=card.scoreTotal@>(<@=card.countScore@>)&nbsp;<span><@=card.area1@></span>&nbsp;<span><@=card.area2@></span></li>
-                <li class="poom"><@=card.poom@>품</li>
-            </ul>
-        </div>
-    </div>
-    <@ }) @>
-</script>
-	<script src="js/common/jquery.js"></script>
-	<script src="js/common/underscore-min.js"></script>
-	<script>
-		_.templateSettings = {
-			interpolate : /\<\@\=(.+?)\@\>/gim,
-			evaluate : /\<\@(.+?)\@\>/gim,
-			escape : /\<\@\-(.+?)\@\>/gim
-		};
-	</script>
-	<script
-		src='https://www.google.com/recaptcha/api.js?onload=onloadCallback'></script>
+<%@ include file="WEB-INF/templates/footer.jsp"%>
+<%@ include file="WEB-INF/templates/card_level_first.jsp"%>
+<%@ include file="WEB-INF/templates/js.jsp"%>
 	<script src="js/popup_login_join.js?date=201804162"></script>
+	<script src="js/card_util.js?date=201804282"></script>
 	<script src="js/slick/slick.min.js"></script>
-	<script src="js/slick/slick_common.js"></script>
-	<script src="js/giver_card_step1.js?date=201804192"></script>
+	<script src="js/slick/slick_helper.js?date=201804283"></script>
 	<script>
 		var $mypage_drop = $(".mypage_drop");
 		var $mypage = $(".mypage");
@@ -839,11 +577,11 @@ img_view div를 만듬*/
 			$mypage_drop.toggleClass("show");
 		})
 
-		var tmp = _.template($("#step1CardTmp").html());
+		var cardLevelFirstTmp = _.template($("#cardGiverLevelFirstTmp").html());
+		//var cardLevelFirstTmp = _.template($("#cardTakerLevelFirstTmp").html());
 
-		//$(".box_card").html(markup);
-
-		cardUtil.selectCardList(tmp, $("#cardBox"), ".img_box");
+		cardUtil.getCardList("ajax/heroCardList.json", cardLevelFirstTmp, $("#cardBox"), ".img_box",6);
+		
 	</script>
 </body>
 </html>
