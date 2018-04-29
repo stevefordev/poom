@@ -12,18 +12,12 @@ $likelistContent_ul.on("click", ".box_heart", function () {
     }
 });
 
-//ul에 template 띄우기
-var $secondLevelGiverCardTmp = $("#secondLevelGiverCardTmp"),
-	secondLevelGiverCardTmp = $secondLevelGiverCardTmp.html(),
-	tmp = _.template(secondLevelGiverCardTmp);
-	
-function createLikelist() {
-    var markup = tmp();
+// 카드 리스트 호출
+cardUtil.dataset = {
+        "level": 2,
+        "count": 5,
+        "pageNum": 1
+      };
+cardUtil.getCardList("ajax/contractCardList.json",
+        $(".content_likelist>ul"), '.profileserviceimg_wrap');
 
-    $likelistContent_ul.prepend(markup);
-}//createLikelist() end
-
-createLikelist();
-
-//하트 항상 활성화
-$(".box_heart").children("i").attr("class", "fas fa-heart");

@@ -261,6 +261,7 @@ body input {
 	text-decoration: none;
 	color: white;
 	font-weight: normal;
+	display:block;
 }
 
 #loginBox .mypage_drop li:last-child {

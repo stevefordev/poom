@@ -184,14 +184,14 @@
 
 .profileserviceimg_wrap {
     width: 320px;
-    height: 230px;
+    height: 280px;
 
 }
 
 .profileservice_img img {
     object-fit: cover;
     width: 320px;
-    height: 230px;
+    height: 280px;
 }
 
 .left_cursor {
@@ -252,4 +252,8 @@
 	cursor: pointer;
 	padding: 4px 8px;
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+.profile_card .slick-dots {
+	bottom:20px;
 }

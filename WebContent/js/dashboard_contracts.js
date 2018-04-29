@@ -31,9 +31,14 @@ $top_tab_li
 			// 위에 큰 탭 클릭했을 때 서비스들의 contract list 펼쳐진거 접기
 			$(".contract_list").empty();
 
-			// 해당 탭 활성화 시 해당 탭의 giver 카드 slick 작동
-			slickUtil.createImageCards(
-					$('.box_contract.on .profileserviceimg_wrap'), 1);
+			// 해당 탭 활성화 시 해당 탭의  카드 리스트 호출하고 slick 작동
+	    cardUtil.dataset = {
+        "level" : 2,
+        "count": 6,
+        "pageNum": 1,
+        "contractStatus" : 1
+      };
+			cardUtil.getCardList("ajax/contractCardList.json", $(".contract_service>ul.on"), '.box_contract.on .profileserviceimg_wrap');
 
 		})// $top_tab_li.click() end
 
@@ -51,8 +56,14 @@ $(".btn_service").click(function() {
 	
 
 	// 해당 탭 활성화 시 해당 탭의 giver 카드 slick 작동
-	slickUtil.createImageCards(
-			$('.box_contract.on .profileserviceimg_wrap'), 1);
+  // 해당 탭 활성화 시 해당 탭의  카드 리스트 호출하고 slick 작동
+  cardUtil.dataset = {
+    "level" : 2,
+    "count": 6,
+    "pageNum": 1,
+    "contractStatus" : 1
+  };
+  cardUtil.getCardList("ajax/contractCardList.json", $(".contract_service>ul.on"), '.box_contract.on .profileserviceimg_wrap');
 
 });
 
@@ -102,7 +113,7 @@ $(".contract_service").on(
 		});// $(".contract_service").on() end
 
 // 대기중인 계약 탭에서 상세버튼 누르면 계약서 띄우기
-$(".contract_list").on("click", ".btn_contract_detail", function() {
+$(".contract_service").on("click", ".btn_contract_detail", function() {
 	var contractBoxIndex = $(this).parents(".box_contract").index();
 	if (contractBoxIndex == 1) {
 		$(".popup_bg").css("display", "block");
@@ -125,13 +136,13 @@ $(".popup.containerContractProgressive").click(function(evt) {
 
 // 수락, 거절 버튼 눌렀을 때
 // 계약목록에서
-$(".contract_list").on("click", ".btn_contract_accept", function() {
+$(".contract_service").on("click", ".btn_contract_accept", function() {
 	if (confirm("해당 계약을 수락하시겠습니까?")) {
 		// 예 버튼 눌렀을 때 해당 계약 사라지게 함
 		$(this).parents(".contract_list li").remove();
 	}
 });
-$(".contract_list").on("click", ".btn_contract_reject", function() {
+$(".contract_service").on("click", ".btn_contract_reject", function() {
 	if (confirm("해당 계약을 거절하시겠습니까?")) {
 		// 예 버튼 눌렀을 때 해당 계약 사라지게 함
 		$(this).parents(".contract_list li").remove();

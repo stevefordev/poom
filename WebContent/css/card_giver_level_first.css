@@ -166,11 +166,18 @@ img_view div를 만듬*/
 	vertical-align: text-bottom;
 	margin-bottom: 1px;
 }
-
 .card .score .icon_small.sun {
 	background-image: url("../img/sun.svg");
 }
-
+.card .score .icon_small.cloudy {
+	background-image: url("../img/cloudy.svg");
+}
+.card .score .icon_small.clouds {
+	background-image: url("../img/clouds.svg");
+}
+.card .score .icon_small.rain {
+	background-image: url("../img/rain.svg");
+}
 .card .score {
 	height: 28px;
 	font-size: 19px;

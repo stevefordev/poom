@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상세페이지_giver</title>
 <%@ include file="WEB-INF/templates/link.jsp"%>
-<link rel="stylesheet" href="css/giver_card_step1.css" />
+<link rel="stylesheet" href="css/card_giver_level_first.css" />
 <link rel="stylesheet" href="css/details_giver.css?date=201804198" />
-<link rel="stylesheet" href="css/details_question_popup.css" />
-<link rel="stylesheet" href="css/details_reply_popup.css" />
+<link rel="stylesheet" href="css/popup_details_question.css" />
+<link rel="stylesheet" href="css/popup_details_reply.css" />
 <link rel="stylesheet" href="css/slick/slick.css" />
 <link rel="stylesheet" href="css/slick/slick-theme.css" />
 
@@ -22,8 +22,9 @@
 #likeBtn .fa-heart {
 	font-size: 50px;
 }
+
 #detailsContractPopup dl dd.schedule span {
-	display:block;
+	display: block;
 }
 </style>
 </head>
@@ -42,13 +43,13 @@
 		</div>
 		<div class="profileserviceimg_wrap">
 			<div class="profileservice_img">
-				<img src="img/serviceimg/lesson1.png">
+				<img src="img/edu/lesson1.png">
 			</div>
 			<div class="profileservice_img">
-				<img src="img/serviceimg/lesson2.png">
+				<img src="img/edu/lesson2.png">
 			</div>
 			<div class="profileservice_img">
-				<img src="img/serviceimg/lesson3.jpg">
+				<img src="img/edu/lesson3.jpg">
 			</div>
 		</div>
 		<h3 class="screen_out">사진정보</h3>
@@ -518,137 +519,35 @@
 
 </script>
 
-	<script type="text/template" id="step1CardTmp">
-    <@ _.each(list,function(card){ @>
-    <div class="card">
-        <div class="img_view">
-            <div class="heart">
-                <i class="far fa-heart"></i>
-                <span class="heart_count"><@=card.heart@></span>
-            </div>
-            <div class="cursor">
-                <button class="left_cursor"><i class="fas fa-angle-left"></i></button>
-                <button class="right_cursor"><i class="fas fa-angle-right"></i></button>
-            </div>
-            <div class="img_box">
-                <img src="<@=card.img1@>">
-                <img src="<@=card.img2@>">
-                <img src="<@=card.img3@>">
-            </div>
-        </div>
-        <div class="profile_pic_box">
-            <img src="<@=card.profilePic@>">
-            <span><@=card.nickname@></span>
-        </div>
-        <div class="content">
-            <ul>
-                <li class="title"><@=card.title@></li>
-                <li class="tag"><@=card.tag@></li>
-                <li class="score"><span class="icon_small sun"></span> <@=card.score@></li>
-                <li class="price"><@=card.price@></li>
-            </ul>
-        </div>
-    </div>
-    <@ }) @>
-</script>
-
+	<%@ include file="WEB-INF/templates/card_level_first.jsp"%>
 	<%@ include file="WEB-INF/templates/js.jsp"%>
-	<script src="js/moment-with-locales.min.js"></script>
+
+	<script src="js/calendar/moment-with-locales.min.js"></script>
 	<script src="js/calendar/tui-code-snippet.min.js"></script>
 	<script src="js/chart/raphael.min.js"></script>
 	<script src="js/chart/tui-chart.js"></script>
+	<script src="js/card_util.js?date=201804283"></script>
 	<script src="js/slick/slick.min.js"></script>
+	<script src="js/slick/slick_helper.js?date=201804283"></script>
 	<script src="js/details_giver.js?date=201804192"></script>
 	<script>
-		var data = {
-			categories : [ "친절성", "성실성", "가격", "숙련도" ],
-			series : [ {
-				name : '넬준',
-				data : [ 7, 7, 8, 10 ]
-			}
+    var data = {
+      categories: ["친절성", "성실성", "가격", "숙련도"],
+      series: [{
+        name: '넬준',
+        data: [7, 7, 8, 10]
+      }]
+    };
 
-			]
-		};
+  //이미지 슬라이드 자바스크립트
+    $('.profileserviceimg_wrap').imageSlide();
 
-		var cards = [ {
-			"heart" : "27",
-			"img1" : "img/heroimage/heroImage.jpg",
-			"img2" : "img/serviceimg/work2.jpg",
-			"img3" : "img/serviceimg/work3.jpg",
-			"profilePic" : "img/profile/profile_img.png",
-			"nickname" : "안륜동",
-			"title" : "집청소의 끝판왕(집안일 뭐든해요)",
-			"tag" : "#청소 #집안일 #이불빨래",
-			"score" : "78%(50) / 서울 마포",
-			"price" : "60품"
-		}, {
-			"heart" : "27",
-			"img1" : "img/heroimage/heroImage.jpg",
-			"img2" : "img/serviceimg/work2.jpg",
-			"img3" : "img/serviceimg/work3.jpg",
-			"profilePic" : "img/profile/profile_img.png",
-			"nickname" : "안륜동",
-			"title" : "집청소의 끝판왕(집안일 뭐든해요)",
-			"tag" : "#청소 #집안일 #이불빨래",
-			"score" : "78%(50) / 서울 마포",
-			"price" : "60품"
-		}, {
-			"heart" : "27",
-			"img1" : "img/heroimage/heroImage.jpg",
-			"img2" : "img/serviceimg/work2.jpg",
-			"img3" : "img/serviceimg/work3.jpg",
-			"profilePic" : "img/profile/profile_img.png",
-			"nickname" : "안륜동",
-			"title" : "집청소의 끝판왕(집안일 뭐든해요)",
-			"tag" : "#청소 #집안일 #이불빨래",
-			"score" : "78%(50) / 서울 마포",
-			"price" : "60품"
-		} ];
-
-		var tmpCards = _.template($("#step1CardTmp").html());
-
-		var markup = tmpCards({
-			"list" : cards
-		});
-
-		$("#cardBox").html(markup);
-
-		$(".heart").click(function() {
-			if ($(this).children("i").hasClass("far")) {
-				$(this).children("i").attr("class", "fas fa-heart");
-			} else {
-				$(this).children("i").attr("class", "far fa-heart");
-			}//if~else end
-		});
-
-		//이미지 슬라이드 자바스크립트
-		$(document).ready(
-				function() {
-					$('.img_box').each(function() {
-						var imgBox = $(this);
-						imgBox.slick({
-							adaptiveHeight : true,
-							prevArrow : imgBox.parent().find(".left_cursor"),
-							nextArrow : imgBox.parent().find(".right_cursor")
-						})
-
-					});
-					$('.profileserviceimg_wrap').each(
-							function() {
-								var profileserviceimg_wrap = $(this);
-								profileserviceimg_wrap.slick({
-									adaptiveHeight : true,
-									prevArrow : profileserviceimg_wrap.parent()
-											.find(".left_cursor"),
-									nextArrow : profileserviceimg_wrap.parent()
-											.find(".right_cursor"),
-									dots : true
-								})
-
-							});
-				});
-	</script>
-
-
+    cardUtil.dataset = {
+      "level" : 1,
+      "count": 5
+    };
+    cardUtil.getCardList("ajax/recommendCardList.json", $("#cardBox"),
+            ".img_box");
+  </script>
 </body>
 </html>

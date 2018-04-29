@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상세페이지_taker</title>
 <%@ include file="WEB-INF/templates/link.jsp"%>
-<link rel="stylesheet" href="css/giver_card_step1.css" />
+<link rel="stylesheet" href="css/card_giver_level_first.css" />
 <link rel="stylesheet" href="css/details_taker.css" />
-<link rel="stylesheet" href="css/details_question_popup.css" />
-<link rel="stylesheet" href="css/details_reply_popup.css" />
+<link rel="stylesheet" href="css/popup_details_question.css" />
+<link rel="stylesheet" href="css/popup_details_reply.css" />
 <link rel="stylesheet" href="css/slick/slick.css" />
 <link rel="stylesheet" href="css/slick/slick-theme.css" />
 
@@ -146,8 +146,7 @@
 								<button id="detailsSendContractBtn">계약서 보내기</button>
 							</div>
 							<!--//#detailsContractPopup-->
-						</div>
-						<!--//#detailsContractPopupWrap-->
+						</div> <!--//#detailsContractPopupWrap-->
 					</li>
 				</ul>
 			</div>
@@ -239,8 +238,7 @@
 										<!--//#replyInfoBox-->
 									</div>
 									<!--//#replyPopup-->
-								</div>
-								<!--//.wrap_popup_reply-->
+								</div> <!--//.wrap_popup_reply-->
 							</li>
 							<li>
 								<div class="question_box">
@@ -389,128 +387,28 @@
         </div><!--.box_contents-->
     </li>
 
-</script>
-	<script type="text/template" id="step1CardTmp">
-    <@ _.each(list,function(card){ @>
-    <div class="card">
-        <div class="img_view">
-            <div class="heart">
-                <i class="far fa-heart"></i>
-                <span class="heart_count"><@=card.heart@></span>
-            </div>
-            <div class="cursor">
-                <button class="left_cursor"><i class="fas fa-angle-left"></i></button>
-                <button class="right_cursor"><i class="fas fa-angle-right"></i></button>
-            </div>
-            <div class="img_box">
-                <img src="<@=card.img1@>">
-                <img src="<@=card.img2@>">
-                <img src="<@=card.img3@>">
-            </div>
-        </div>
-        <div class="profile_pic_box">
-            <img src="<@=card.profilePic@>">
-            <span><@=card.nickname@></span>
-        </div>
-        <div class="content">
-            <ul>
-                <li class="title"><@=card.title@></li>
-                <li class="tag"><@=card.tag@></li>
-                <li class="score"><span class="icon_small sun"></span> <@=card.score@></li>
-                <li class="price"><@=card.price@></li>
-            </ul>
-        </div>
-    </div>
-    <@ }) @>
-</script>
-
+</script> 
+	<%@ include file="WEB-INF/templates/card_level_first.jsp"%>
 	<%@ include file="WEB-INF/templates/js.jsp"%>
-	<script src="js/moment-with-locales.min.js"></script>
+
+	<script src="js/calendar/moment-with-locales.min.js"></script>
 	<script src="js/calendar/tui-code-snippet.min.js"></script>
 	<script src="js/chart/raphael.min.js"></script>
 	<script src="js/chart/tui-chart.js"></script>
+	<script src="js/card_util.js?date=201804283"></script>
 	<script src="js/slick/slick.min.js"></script>
-	<script src="js/details_giver.js"></script>
+	<script src="js/slick/slick_helper.js?date=201804283"></script>
+	<script src="js/details_taker.js?date=201804192"></script>
+
 	<script>
-		$(document).ready(function() {
-			$('.img_box').each(function() {
-				var imgBox = $(this);
-				imgBox.slick({
-					adaptiveHeight : true,
-					prevArrow : imgBox.parent().find(".left_cursor"),
-					nextArrow : imgBox.parent().find(".right_cursor")
-				})
-
-			});
-		});
-
-		$(document).ready(
-				function() {
-					$('.profileserviceimg_wrap').each(
-							function() {
-								var profileserviceimg_wrap = $(this);
-								profileserviceimg_wrap.slick({
-									adaptiveHeight : true,
-									prevArrow : profileserviceimg_wrap.parent()
-											.find(".left_cursor"),
-									nextArrow : profileserviceimg_wrap.parent()
-											.find(".right_cursor"),
-									dots : true
-								})
-
-							});
-				});
-
-		var cards = [ {
-			"heart" : "27",
-			"img1" : "img/heroimage/heroImage.jpg",
-			"img2" : "img/serviceimg/work2.jpg",
-			"img3" : "img/serviceimg/work3.jpg",
-			"profilePic" : "img/profile/profile_img.png",
-			"nickname" : "안륜동",
-			"title" : "집청소의 끝판왕(집안일 뭐든해요)",
-			"tag" : "#청소 #집안일 #이불빨래",
-			"score" : "78%(50) / 서울 마포",
-			"price" : "60품"
-		}, {
-			"heart" : "27",
-			"img1" : "img/heroimage/heroImage.jpg",
-			"img2" : "img/serviceimg/work2.jpg",
-			"img3" : "img/serviceimg/work3.jpg",
-			"profilePic" : "img/profile/profile_img.png",
-			"nickname" : "안륜동",
-			"title" : "집청소의 끝판왕(집안일 뭐든해요)",
-			"tag" : "#청소 #집안일 #이불빨래",
-			"score" : "78%(50) / 서울 마포",
-			"price" : "60품"
-		}, {
-			"heart" : "27",
-			"img1" : "img/heroimage/heroImage.jpg",
-			"img2" : "img/serviceimg/work2.jpg",
-			"img3" : "img/serviceimg/work3.jpg",
-			"profilePic" : "img/profile/profile_img.png",
-			"nickname" : "안륜동",
-			"title" : "집청소의 끝판왕(집안일 뭐든해요)",
-			"tag" : "#청소 #집안일 #이불빨래",
-			"score" : "78%(50) / 서울 마포",
-			"price" : "60품"
-		} ];
-
-		var cardTmp = _.template($("#step1CardTmp").html());
-
-		var markup = cardTmp({
-			"list" : cards
-		});
-
-		$("#cardBox").html(markup);
-
-		$(".heart").click(function() {
-			if ($(this).children("i").hasClass("far")) {
-				$(this).children("i").attr("class", "fas fa-heart");
-			} else {
-				$(this).children("i").attr("class", "far fa-heart");
-			}//if~else end
-		});
-	</script>
+  
+    
+    cardUtil.dataset = {
+            "level" : 1,
+            "count": 3
+          };
+          cardUtil.getCardList("ajax/recommendCardList.json", $("#cardBox"),
+                  ".img_box");
+  </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	String userNoStr = request.getParameter("userNo");
+  String userNoStr = request.getParameter("userNo");
 %>
 <!DOCTYPE html>
 <html>
@@ -11,11 +11,11 @@
 <title>템플릿</title>
 <%@ include file="WEB-INF/templates/link.jsp"%>
 <link rel="stylesheet" href="css/profile_following.css">
-<link rel="stylesheet" href="css/second_level_giver_card.css?date=201804191" />
-<link rel="stylesheet" href="css/second_level_taker_card.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/slick/slick.css?date=201804191" />
-<link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css" />
+<link rel="stylesheet"
+	href="css/card_giver_level_second.css?date=201804191" />
+<link rel="stylesheet" href="css/card_taker_level_second.css" />
+<link rel="stylesheet" href="css/slick/slick.css?date=201804191" />
+<link rel="stylesheet" href="css/slick/slick-theme.css" />
 <link rel="stylesheet" href="css/profile.css?data=201804191" />
 
 <style>
@@ -86,91 +86,8 @@
 
 					<div class="list_giver_pay">
 						<div class="pay_contents">
-
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="giverdetail.jsp">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name" href="">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-							</div>
-							<!--//.profile_card-->
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="giverdetail.jsp">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name" href="">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-							</div>
-							<!--//.profile_card-->
+ 							<ul>
+ 							</ul>
 						</div>
 						<!--pay_contents -->
 					</div>
@@ -180,78 +97,8 @@
 					<div class="list_taker_pay">
 
 						<div class="pay_contents">
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="takerdetail.jsp">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-							</div>
-							<!--//.taker_profile_card-->
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="takerdetail.jsp">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-							</div>
-							<!--//.taker_profile_card-->
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="takerdetail.jsp">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-							</div>
-							<!--//.taker_profile_card-->
+							<ul>
+ 							</ul>							    
 						</div>
 						<!--pay_contents -->
 					</div>
@@ -301,17 +148,25 @@
 	<!--profile_content -->
 
 	<%@ include file="WEB-INF/templates/footer.jsp"%>
+	<%@ include file="WEB-INF/templates/card_level_second.jsp"%>
 	<%@ include file="WEB-INF/templates/js.jsp"%>
-	<script src="js/profile_following.js"></script>
-	<script src="js/second_level_giver_card.js"></script>
-	<script src="js/second_level_taker_card.js"></script>
+	<script src="js/card_giver_level_second.js"></script>
+	<script src="js/card_taker_level_second.js"></script>
+	<script src="js/slick/slick.min.js"></script>
+	<script src="js/slick/slick_helper.js?date=201804291"></script>
+	<script src="js/card_util.js?date=201804283"></script>
 	<script src="js/profile.js"></script>
-	<script type="text/javascript" src="js/slick/slick.min.js"></script>
-	<script src="js/slick/slick_common.js"></script>
 	<script>
-		slickUtil.createImageCards(
-				$('.profileserviceimg_wrap'), 1);
-	</script>
+    //카드 리스트 호출
+    cardUtil.dataset = {
+      "level": 2,
+      "count": 5,
+      "pageNum": 1
+    };
+    cardUtil.getCardList("ajax/contractCardList.json",
+            $(".list_giver_pay ul"), '.profileserviceimg_wrap');
+ 
+  </script>
 
 </body>
 </html>

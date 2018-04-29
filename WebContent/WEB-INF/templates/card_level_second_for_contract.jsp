@@ -37,7 +37,8 @@
 							<div class="profile_img"></div>
 							<div class="profile_name"><@=card.nickname@></div>
 						</div> <!--//.service_inform-->
-					</a>					
+					</a>
+					<button class="btn_contract_list">계약 목록</button>
 				</div> <!--//.profile_card-->
 				<ul class="contract_list">
 
@@ -65,7 +66,8 @@
 							<li><@=card.poom@>품</li>
 							</ul>
 						</div> <!--//.taker_service_inform-->
-					</a>					
+					</a>
+					<button class="btn_contract_list">계약 목록</button>
 				</div> <!--//.taker_profile_card-->
 				<ul class="contract_list">
 				</ul>

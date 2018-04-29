@@ -304,9 +304,12 @@
 
     });
 
-    var cardLevelFirstTmp = _.template($("#cardGiverLevelFirstTmp").html());
-    cardUtil.getCardList("ajax/searchCardList.json", cardLevelFirstTmp,
-            $("#cardBox"), ".img_box", 6);
+    cardUtil.dataset = {
+            "level" : 1,
+            "count": 6,
+            "pageNum": 1
+          };
+    cardUtil.getCardList("ajax/searchCardList.json", $("#cardBox"), ".img_box");
   </script>
 
 </body>

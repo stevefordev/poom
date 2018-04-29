@@ -7,21 +7,20 @@
 <title>계약 대시보드</title>
 <%@ include file="WEB-INF/templates/link.jsp"%>
 <link rel="stylesheet" href="css/dashboard_template.css" />
-<link rel="stylesheet" href="css/dashboard_contracts.css" />
+<link rel="stylesheet" href="css/dashboard_contract.css" />
 <link rel="stylesheet" href="css/slick/slick.css" />
 <link rel="stylesheet" href="css/slick/slick-theme.css" />
-<link rel="stylesheet" href="css/second_level_giver_card.css" />
-<link rel="stylesheet" href="css/second_level_taker_card.css" />
+<link rel="stylesheet" href="css/card_giver_level_second.css?date=201804293" />
+<link rel="stylesheet" href="css/card_taker_level_second.css" />
 <link rel="stylesheet" href="css/popup_detailcontract.css" />
 <link rel="stylesheet" href="css/popup_contract_progressive.css" />
-<link rel="stylesheet" href="css/score_taker.css" />
-<link rel="stylesheet" href="css/score_giver.css" />
+<link rel="stylesheet" href="css/popup_score_taker.css" />
+<link rel="stylesheet" href="css/popup_score_giver.css" />
 <style>
 </style>
 </head>
 <body>
 	<%@ include file="WEB-INF/templates/header.jsp"%>
-
 	<%@ include file="WEB-INF/templates/dashboard_template.jsp"%>
 	<div class="popup_bg">
 		<div id="detailContractPopup">
@@ -194,18 +193,18 @@
 								type="radio" name="score1">
 						</div>
 					</dd>
-					</dt>
-					<div class="review">
-						<dt>리뷰</dt>
-						<dd>
-							<textarea name="" maxlength="100"></textarea>
-						</dd>
-					</div>
-					<div class="btn_group">
-						<input type="submit" value="등록"> <input type="button"
-							class="cancel" value="취소">
-					</div>
+
 				</dl>
+				<div class="review">
+					<dt>리뷰</dt>
+					<dd>
+						<textarea name="" maxlength="100"></textarea>
+					</dd>
+				</div>
+				<div class="btn_group">
+					<input type="submit" value="등록"> <input type="button"
+						class="cancel" value="취소">
+				</div>
 			</form>
 		</div>
 	</div>
@@ -226,164 +225,11 @@
 				</div>
 				<div class="contract_service">
 					<ul class="contract_myservice on">
-						<li>
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-						<li>
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고, 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.taker_profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
+						
+						 
 					</ul>
 					<ul class="contract_otherservice">
-						<li>
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고, 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.taker_profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-						<li>
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-
-
+						  
 					</ul>
 				</div>
 			</div>
@@ -398,162 +244,10 @@
 				</div>
 				<div class="contract_service">
 					<ul class="contract_myservice on">
-						<li>
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-						<li>
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고, 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.taker_profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
+						 
 					</ul>
 					<ul class="contract_otherservice">
-						<li>
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고, 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.taker_profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-						<li>
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
+						 
 					</ul>
 				</div>
 			</div>
@@ -568,162 +262,10 @@
 				</div>
 				<div class="contract_service">
 					<ul class="contract_myservice on">
-						<li>
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-						<li>
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고, 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.taker_profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
+						 
 					</ul>
 					<ul class="contract_otherservice">
-						<li>
-							<div class="taker_profile_card">
-								<div class="taker_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-									<div class="taker_img"></div>
-									<div class="taker_name">서강준</div>
-								</div>
-								<!--//.taker_box-->
-								<a href="">
-									<div class="taker_service_inform">
-										<ul>
-											<li>주중, 주말 집 청소 해 줄 사람 구합니다. 전문적이고, 주기적으로 가능하신 분!</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 강남, 목동</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#커튼빨래 #집청소 #이불빨래</li>
-											<li>30품</li>
-										</ul>
-									</div> <!--//.taker_service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.taker_profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
-						<li>
-							<div class="profile_card">
-								<div class="profileserviceimg_box">
-									<div class="box_heart">
-										<i class="far fa-heart on"></i> <span class="heart_count">26</span>
-									</div>
-
-									<button class="left_cursor cursor">
-										<i class="fas fa-angle-left"></i>
-									</button>
-									<button class="right_cursor cursor">
-										<i class="fas fa-angle-right"></i>
-									</button>
-
-									<div class="profileserviceimg_wrap">
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson1.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson2.png">
-										</div>
-										<div class="profileservice_img">
-											<img src="img/serviceimg/lesson3.jpg">
-										</div>
-									</div>
-								</div>
-								<!--//.profileserviceimg_box-->
-								<a href="">
-									<div class="service_inform">
-										<ul>
-											<li>코딩 과외! HTML, CSS, Javascript, Java, Spring, SQL</li>
-											<li><span class="icon_small sun"></span> 78%(21) | 서울
-												마포, 신림, 관악, 강남</li>
-											<li>2018-04-28 오후 6-7시 외 5개 일정</li>
-											<li>진행 중인 계약 6건 | 완료된 계약 21건</li>
-											<li>#코딩 #풀스텍 #코딩이너무좋아요</li>
-											<li>1230품</li>
-										</ul>
-										<div class="profile_img"></div>
-										<div class="profile_name">서강준</div>
-									</div> <!--//.service_inform-->
-								</a>
-								<button class="btn_contract_list">계약 목록</button>
-							</div> <!--//.profile_card-->
-							<ul class="contract_list">
-
-							</ul>
-						</li>
+						  
 					</ul>
 				</div>
 				<!-- //.contract_service -->
@@ -795,21 +337,28 @@
 </script>
 
 	<%@ include file="WEB-INF/templates/footer.jsp"%>
+	<%@ include file="WEB-INF/templates/card_level_second_for_contract.jsp"%>
 	<%@ include file="WEB-INF/templates/js.jsp"%>
 	<script src="js/dashboard_template.js"></script>
-	<script src="js/second_level_giver_card.js"></script>
-	<script src="js/second_level_taker_card.js"></script>
+	<script src="js/card_giver_level_second.js"></script>
+	<script src="js/card_taker_level_second.js"></script>
 	<script src="js/popup_contract_progressive.js"></script>
-	<script src="js/score_giver.js"></script>
-	<script src="js/score_taker.js"></script>
+	<script src="js/popup_score_giver.js"></script>
+	<script src="js/popup_score_taker.js"></script>
+	<script src="js/card_util.js?date=201804283"></script>
 	<script src="js/slick/slick.min.js"></script>
-	<script src="js/slick/slick_common.js"></script>
+	<script src="js/slick/slick_helper.js?date=201804291"></script>
 	<script src="js/dashboard_contracts.js?date=201804193"></script>
 	<script>
-		// 이미지 슬라이드 표현 (slick_common.js)
-					// 해당 탭 활성화 시 해당 탭의 giver 카드 slick 작동
-			slickUtil.createImageCards(
-					$('.box_contract.on .profileserviceimg_wrap'), 1);
-	</script>
+    
+    cardUtil.dataset = {
+      "level" : 2,
+      "count": 5,
+      "pageNum": 1,
+      "contractStatus" : 1
+    };
+    cardUtil.getCardList("ajax/contractCardList.json", $(".box_contract.on div>ul.on"), '.box_contract.on .profileserviceimg_wrap');
+    
+  </script>
 </body>
 </html>

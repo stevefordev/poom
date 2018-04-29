@@ -7,7 +7,7 @@
 <title>차단 대시보드</title>
 <%@ include file="WEB-INF/templates/link.jsp"%>
 <link rel="stylesheet" href="css/dashboard_template.css"/>
-<link rel="stylesheet" href="css/dashboard_blocklist.css"/>
+<link rel="stylesheet" href="css/dashboard_block.css"/>
 <style>
 
 </style>
@@ -80,6 +80,6 @@
 
 <%@ include file="WEB-INF/templates/js.jsp"%>
 <script src="js/dashboard_template.js"></script>
-<script src="js/dashboard_blocklist.js"></script>
+<script src="js/dashboard_block.js"></script>
 </body>
 </html>

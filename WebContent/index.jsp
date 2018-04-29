@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	User loginUser = (User) session.getAttribute(User.LOGIN_USER);
+  User loginUser = (User) session.getAttribute(User.LOGIN_USER);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
@@ -20,8 +20,10 @@
 <link rel="stylesheet" href="css/footer.css">
 <link rel="stylesheet" href="css/alert.css" />
 <link rel="stylesheet" href="css/popup_login_join.css?date=201804161" />
-<link rel="stylesheet" href="css/card_giver_level_first.css?date=201804272" />
-<link rel="stylesheet" href="css/card_taker_level_first.css?date=201804271" />
+<link rel="stylesheet"
+	href="css/card_giver_level_first.css?date=201804272" />
+<link rel="stylesheet"
+	href="css/card_taker_level_first.css?date=201804271" />
 <style>
 body {
 	font-family: "Noto Sans KR", sans-serif;
@@ -337,7 +339,6 @@ body {
 }
 
 /*********************/
-
 </style>
 </head>
 <body>
@@ -361,7 +362,7 @@ body {
 						</form>
 					</div>
 					<%
-						if (loginUser == null) {
+					  if (loginUser == null) {
 					%>
 					<div id="linkBox" class="on">
 
@@ -510,7 +511,7 @@ body {
 						</div>
 					</div>
 					<%
-						} else {
+					  } else {
 					%>
 					<!--로그인했을때 히어로페이지 상단 링크에 회원가입 로그인 대신 내프로필과 프로필사진 닉네임이 나오도록 on클래스-->
 					<div id="loginBox" class="on">
@@ -543,7 +544,7 @@ body {
 					</div>
 
 					<%
-						}
+					  }
 					%>
 				</div>
 				<p id="text">
@@ -552,36 +553,34 @@ body {
 					수 있도록 도와주는<br /> <span class="emphasis">공유경제 플렛폼 서비스</span>입니다
 				</p>
 			</div>
-		</div><!--//end heroImage  -->
+		</div>
+		<!--//end heroImage  -->
 		<div id="recomendService">
 			<div id="recomendText">
 				<span>추천</span>
 			</div>
 			<div id="cardBox"></div>
-		</div><!--//end recomendText  -->
-		 
+		</div>
+		<!--//end recomendText  -->
+
 	</div>
 
-<%@ include file="WEB-INF/templates/footer.jsp"%>
-<%@ include file="WEB-INF/templates/card_level_first.jsp"%>
-<%@ include file="WEB-INF/templates/js.jsp"%>
+	<%@ include file="WEB-INF/templates/footer.jsp"%>
+	<%@ include file="WEB-INF/templates/card_level_first.jsp"%>
+	<%@ include file="WEB-INF/templates/js.jsp"%>
 	<script src="js/popup_login_join.js?date=201804162"></script>
-	<script src="js/card_util.js?date=201804282"></script>
+	<script src="js/card_util.js?date=201804283"></script>
 	<script src="js/slick/slick.min.js"></script>
 	<script src="js/slick/slick_helper.js?date=201804283"></script>
 	<script>
-		var $mypage_drop = $(".mypage_drop");
-		var $mypage = $(".mypage");
-		$mypage.on('click', function(e) {
-			e.preventDefault();
-			$mypage_drop.toggleClass("show");
-		})
+ 
 
-		var cardLevelFirstTmp = _.template($("#cardGiverLevelFirstTmp").html());
-		//var cardLevelFirstTmp = _.template($("#cardTakerLevelFirstTmp").html());
-
-		cardUtil.getCardList("ajax/heroCardList.json", cardLevelFirstTmp, $("#cardBox"), ".img_box",6);
-		
-	</script>
+    cardUtil.dataset = {
+      "level" : 1,
+      "count": 5
+    };
+    cardUtil.getCardList("ajax/heroCardList.json", $("#cardBox"),
+            ".img_box");
+  </script>
 </body>
 </html>

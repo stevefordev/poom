@@ -1,5 +1,6 @@
 [
 	{
+		"isLike" : false,
 		"countLike": "18",
 		"photos": [
 			"img/house/laundry/laundry1.jpg",
@@ -15,9 +16,11 @@
 		"area1": "서울",
 		"area2": "관악구",
 		"icon" : "sun",
-		"poom": "40"
+		"poom": "40",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "30",
 		"photos": [
 			"img/house/laundry/laundry4.jpg",
@@ -33,9 +36,11 @@
 		"icon" : "sun",
 		"area1": "서울",
 		"area2": "관악구",
-		"poom": "50"
+		"poom": "50",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "9",
 		"photos": [
 			"img/house/cleaning/toilet1.jpg",
@@ -51,9 +56,11 @@
 		"icon" : "cloudy",
 		"area1": "서울",
 		"area2": "관악구",
-		"poom": "35"
+		"poom": "35",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "12",
 		"photos": [
 			"img/house/cleaning/toilet4.jpg",
@@ -69,9 +76,11 @@
 		"icon" : "sun",
 		"area1": "서울",
 		"area2": "관악구",
-		"poom": "40"
+		"poom": "40",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "15",
 		"photos": [
 			"img/house/cleaning/toilet7.jpg",
@@ -87,9 +96,11 @@
 		"icon" : "cloudy",
 		"area1": "서울",
 		"area2": "관악구",
-		"poom": "45"
+		"poom": "45",
+		"isGiver" : true
 	},
 	{
+		"isLike" : true,
 		"countLike": "51",
 		"photos": [
 			"img/house/cleaning/cleaning21.jpg",
@@ -105,6 +116,7 @@
 		"icon" : "sun",
 		"area1": "서울",
 		"area2": "관악구",
-		"poom": "50"
+		"poom": "50",
+		"isGiver" : true
 	}
 ]

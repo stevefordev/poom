@@ -84,3 +84,16 @@
 .taker_content li{
     margin-bottom: 25px;
 }
+
+.score .icon_small.sun {
+	background-image: url("../img/sun.svg");
+}
+.score .icon_small.cloudy {
+	background-image: url("../img/cloudy.svg");
+}
+.score .icon_small.clouds {
+	background-image: url("../img/clouds.svg");
+}
+.score .icon_small.rain {
+	background-image: url("../img/rain.svg");
+}

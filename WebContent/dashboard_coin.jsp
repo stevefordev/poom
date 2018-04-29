@@ -15,9 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>템플릿</title>
 <%@ include file="WEB-INF/templates/link.jsp"%>
-<link rel="stylesheet" href="css/billboard.css" />
-<link rel="stylesheet" href="css/coin_exchange_popup.css" />
-<link rel="stylesheet" href="css/coin_charge_popup.css" />
+<link rel="stylesheet" href="css/chart/billboard.css" />
+<link rel="stylesheet" href="css/popup_coin_exchange.css" />
+<link rel="stylesheet" href="css/popup_coin_charge.css" />
 <link rel="stylesheet" href="css/dashboard_coin.css" />
 <link rel="stylesheet" href="css/dashboard_template.css" />
 <style>
@@ -267,7 +267,7 @@
 		<%@ include file="WEB-INF/templates/js.jsp"%>
 		<script src="js/dashboard_template.js"></script>
 		<script src="https://d3js.org/d3.v4.min.js"></script>
-		<script src="js/billboard.js"></script>
+		<script src="js/chart/billboard.js"></script>
 		<script src="js/dashboard_coin.js"></script>
 </body>
 </html>

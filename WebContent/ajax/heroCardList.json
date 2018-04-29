@@ -1,5 +1,6 @@
 [
 	{
+		"isLike" : false,
 		"countLike": "22",
 		"photos": [
 			"img/edu/edu1.jpg",
@@ -15,9 +16,11 @@
 		"icon" : "sun",
 		"area1": "서울",
 		"area2": "관악구",
-		"poom": "20"
+		"poom": "20",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "10",
 		"photos": [
 			"img/edu/swim1.jpg",
@@ -33,9 +36,11 @@
 		"icon" : "sun",
 		"area1": "경기",
 		"area2": "부천시",
-		"poom": "50"
+		"poom": "50",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "19",
 		"photos": [
 			"img/house/cleaning/cleaning13.jpg",
@@ -51,9 +56,11 @@
 		"icon" : "cloudy",
 		"area1": "대구",
 		"area2": "달성군",
-		"poom": "35"
+		"poom": "35",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "32",
 		"photos": [
 			"img/house/cleaning/cleaning10.jpg",
@@ -69,9 +76,11 @@
 		"icon" : "sun",
 		"area1": "인천",
 		"area2": "남구",
-		"poom": "40"
+		"poom": "40",
+		"isGiver" : true
 	},
 	{
+		"isLike" : false,
 		"countLike": "45",
 		"photos": [
 			"img/delivery/delivery1.jpg",
@@ -87,9 +96,11 @@
 		"icon" : "cloudy",
 		"area1": "서울",
 		"area2": "구로구",
-		"poom": "45"
+		"poom": "45",
+		"isGiver" : true
 	},
 	{
+		"isLike" : true,
 		"countLike": "22",
 		"photos": [
 			"img/delivery/delivery4.jpg",
@@ -105,6 +116,7 @@
 		"icon" : "sun",
 		"area1": "서울",
 		"area2": "강남구",
-		"poom": "50"
+		"poom": "50",
+		"isGiver" : true
 	}
 ]
