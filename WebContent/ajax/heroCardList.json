@@ -17,7 +17,7 @@
 		"area1": "서울",
 		"area2": "관악구",
 		"poom": "20",
-		"isGiver" : true
+		"role" : 1
 	},
 	{
 		"isLike" : false,
@@ -37,7 +37,7 @@
 		"area1": "경기",
 		"area2": "부천시",
 		"poom": "50",
-		"isGiver" : true
+		"role" : 1
 	},
 	{
 		"isLike" : false,
@@ -57,7 +57,7 @@
 		"area1": "대구",
 		"area2": "달성군",
 		"poom": "35",
-		"isGiver" : true
+		"role" : 1
 	},
 	{
 		"isLike" : false,
@@ -77,7 +77,7 @@
 		"area1": "인천",
 		"area2": "남구",
 		"poom": "40",
-		"isGiver" : true
+		"role" : 1
 	},
 	{
 		"isLike" : false,
@@ -97,7 +97,7 @@
 		"area1": "서울",
 		"area2": "구로구",
 		"poom": "45",
-		"isGiver" : true
+		"role" : 1
 	},
 	{
 		"isLike" : true,
@@ -117,6 +117,6 @@
 		"area1": "서울",
 		"area2": "강남구",
 		"poom": "50",
-		"isGiver" : true
+		"role" : 1
 	}
 ]

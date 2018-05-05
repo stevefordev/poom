@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <script type="text/template" id="cardLevelFirstTmp">
     <@ _.each(list,function(card){ @>
-		<@ if(card.isGiver == true) { @>
+		<@ if(card.role == 1) { @>
 			<div class="card">
 				<div class="img_view">
 					<div class="heart">

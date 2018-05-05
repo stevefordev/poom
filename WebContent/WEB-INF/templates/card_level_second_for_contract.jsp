@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <script type="text/template" id="cardLevelSecondTmp">
     <@ _.each(list,function(card){ @>
-		<@ if(card.isGiver == true){ @>
+		<@ if(card.role == 1){ @>
 			<li>
 				<div class="profile_card card">
 					<div class="profileserviceimg_box">
