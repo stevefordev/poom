@@ -1,4 +1,5 @@
-<%@page import="util.ResizeImageUtil"%>
+
+<%@page import="com.coddington.poom.util.ResizeImageUtil"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.multipart.FileRenamePolicy"%>
